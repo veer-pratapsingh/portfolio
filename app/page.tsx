@@ -80,6 +80,33 @@ const projects = [
   },
 ];
 
+const contentWork = [
+  {
+    number: "01",
+    name: "Singh Laly Official",
+    handle: "@singhlalyofficial",
+    type: "Personal brand · Food & hospitality",
+    description:
+      "Short-form content and profile management for a Germany-based chef and hospitality entrepreneur—turning food, personality and culture into a consistent social presence.",
+    image: "/content/singh-laly.jpg",
+    url: "https://www.instagram.com/singhlalyofficial/",
+    services: ["Content direction", "Reels", "Publishing", "Community"],
+    accent: "content-warm",
+  },
+  {
+    number: "02",
+    name: "Intellia MIET",
+    handle: "@intellia_miet",
+    type: "Education · AI community",
+    description:
+      "Event-led content for MIET’s AI and AI/ML departmental society—making workshops, student activity and campus momentum visible.",
+    image: "/content/intellia-2.jpg",
+    url: "https://www.instagram.com/intellia_miet/",
+    services: ["Event coverage", "Editorial planning", "Visual system", "Community"],
+    accent: "content-cool",
+  },
+];
+
 function ExternalArrow() {
   return <span aria-hidden="true">↗</span>;
 }
@@ -92,7 +119,8 @@ export default function Home() {
           V<span>/</span>PS
         </a>
         <nav aria-label="Primary navigation">
-          <a href="#work">Work</a>
+          <a href="#work">Websites</a>
+          <a href="#content">Content</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -110,15 +138,15 @@ export default function Home() {
         <div className="hero-copy">
           <p className="eyebrow">
             <span className="status-dot" aria-hidden="true" />
-            Independent web developer · India
+            Web development · Content management
           </p>
           <h1>
-            I build websites
-            <span>people remember.</span>
+            Websites that work.
+            <span>Content that connects.</span>
           </h1>
           <p className="hero-intro">
-            Digital experiences with strong ideas, thoughtful interaction and
-            the technical craft to make every detail feel effortless.
+            I build high-performing digital experiences and manage social
+            content that gives brands a clear, consistent voice.
           </p>
           <a className="primary-button" href="#work">
             Explore selected work <span aria-hidden="true">↓</span>
@@ -138,28 +166,29 @@ export default function Home() {
             <span>Veer Pratap Singh</span>
           </div>
           <div className="hero-stat">
-            <strong>07</strong>
-            <span>Live digital products<br />across 5 industries</span>
+            <div><strong>07</strong><span>Live websites</span></div>
+            <i aria-hidden="true" />
+            <div><strong>02</strong><span>Social brands</span></div>
           </div>
           <div className="orbit-note" aria-hidden="true">
-            <span>Design</span><span>Development</span><span>Delivery</span>
+            <span>Build</span><span>Publish</span><span>Grow</span>
           </div>
         </div>
       </section>
 
       <div className="ticker" aria-hidden="true">
         <div>
-          <span>Strategy</span><b>✦</b><span>UI/UX</span><b>✦</b>
-          <span>Development</span><b>✦</b><span>Performance</span><b>✦</b>
-          <span>Strategy</span><b>✦</b><span>UI/UX</span><b>✦</b>
-          <span>Development</span><b>✦</b><span>Performance</span><b>✦</b>
+          <span>Web strategy</span><b>✦</b><span>Development</span><b>✦</b>
+          <span>Content direction</span><b>✦</b><span>Social media</span><b>✦</b>
+          <span>Web strategy</span><b>✦</b><span>Development</span><b>✦</b>
+          <span>Content direction</span><b>✦</b><span>Social media</span><b>✦</b>
         </div>
       </div>
 
       <section className="work-section" id="work">
         <div className="section-heading">
-          <p className="section-kicker">Selected work / 2024–26</p>
-          <h2>Built for the real world.</h2>
+          <p className="section-kicker">Website portfolio / 2024–26</p>
+          <h2>Websites built to perform.</h2>
           <p>
             Seven live websites, each shaped around a different audience,
             industry and business goal.
@@ -212,20 +241,74 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="content-section" id="content">
+        <div className="content-heading">
+          <p className="section-kicker light">Content management / Selected accounts</p>
+          <h2>More than posting.<br /><span>Building a presence.</span></h2>
+          <p>
+            From editorial planning to publishing and community, I help brands
+            show up with content that feels coherent, relevant and unmistakably theirs.
+          </p>
+        </div>
+
+        <div className="content-services" aria-label="Content management services">
+          <span>Direction</span><span>Planning</span><span>Reels</span>
+          <span>Publishing</span><span>Community</span>
+        </div>
+
+        <div className="content-grid">
+          {contentWork.map((account) => (
+            <article className={`content-case ${account.accent}`} key={account.url}>
+              <a
+                className="content-visual"
+                href={account.url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`View ${account.name} on Instagram`}
+              >
+                <div className="social-bar" aria-hidden="true">
+                  <span className="social-avatar">{account.name.slice(0, 1)}</span>
+                  <div><strong>{account.handle}</strong><small>Instagram</small></div>
+                  <b>•••</b>
+                </div>
+                <img
+                  src={account.image}
+                  alt={`${account.name} content management work`}
+                  width="1200"
+                  height="800"
+                  loading="lazy"
+                />
+                <span className="instagram-badge" aria-hidden="true">View account ↗</span>
+              </a>
+              <div className="content-info">
+                <p className="content-meta">{account.number} / {account.type}</p>
+                <h3>{account.name}</h3>
+                <p>{account.description}</p>
+                <ul aria-label={`Services provided for ${account.name}`}>
+                  {account.services.map((service) => <li key={service}>{service}</li>)}
+                </ul>
+                <a href={account.url} target="_blank" rel="noreferrer">
+                  Open on Instagram <ExternalArrow />
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="about-section" id="about">
         <div className="about-intro">
           <p className="section-kicker light">About / Approach</p>
           <h2>
-            Good websites look sharp.
-            <span>Great ones move the business forward.</span>
+            Strong work gets attention.
+            <span>Clear thinking keeps it.</span>
           </h2>
         </div>
         <div className="about-copy">
           <p>
-            I’m Veer, a developer who enjoys turning ambitious ideas into
-            fast, intuitive digital experiences. My work moves between brand,
-            interface and code—so the final product feels considered from the
-            first scroll to the last click.
+            I’m Veer, a developer and content manager who turns ambitious ideas
+            into useful digital experiences. My work moves between brand,
+            story, interface and code—so every touchpoint feels connected.
           </p>
           <a
             href="https://github.com/veer-pratapsingh"
@@ -243,13 +326,13 @@ export default function Home() {
           </div>
           <div>
             <span>02</span>
-            <h3>Shape the experience</h3>
-            <p>Turn that idea into a visual system with purposeful hierarchy, rhythm and interaction.</p>
+            <h3>Shape the system</h3>
+            <p>Turn that idea into a visual and editorial system with purposeful rhythm and a recognisable voice.</p>
           </div>
           <div>
             <span>03</span>
-            <h3>Ship with care</h3>
-            <p>Build responsively, tune performance and polish the small details that earn trust.</p>
+            <h3>Build, publish, learn</h3>
+            <p>Ship with care, watch what resonates and keep improving the experience across every channel.</p>
           </div>
         </div>
       </section>
@@ -271,7 +354,7 @@ export default function Home() {
         <a className="monogram footer-mark" href="#top" aria-label="Back to top">
           V<span>/</span>PS
         </a>
-        <p>Web design & development by Veer Pratap Singh.</p>
+        <p>Web development & content management by Veer Pratap Singh.</p>
         <p>© 2026 · Meerut, India</p>
       </footer>
     </main>

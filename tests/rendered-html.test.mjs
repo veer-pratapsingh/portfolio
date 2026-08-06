@@ -30,13 +30,17 @@ test("server-renders the completed portfolio", async () => {
 
   const html = await response.text();
   assert.match(html, /Veer Pratap Singh/);
-  assert.match(html, /I build websites/);
-  assert.match(html, /people remember\./);
-  assert.match(html, /Built for the real world\./);
+  assert.match(html, /Websites that work\./);
+  assert.match(html, /Content that connects\./);
+  assert.match(html, /Websites built to perform\./);
+  assert.match(html, /More than posting\./);
   assert.match(html, /Let’s make it/);
 
   const renderedProjects = html.match(/<article class="project-card/g) ?? [];
   assert.equal(renderedProjects.length, 7);
+
+  const renderedContentCases = html.match(/<article class="content-case/g) ?? [];
+  assert.equal(renderedContentCases.length, 2);
 
   for (const domain of [
     "daselb.com",
@@ -49,6 +53,10 @@ test("server-renders the completed portfolio", async () => {
   ]) {
     assert.match(html, new RegExp(domain.replaceAll(".", "\\.")));
   }
+
+  for (const handle of ["singhlalyofficial", "intellia_miet"]) {
+    assert.match(html, new RegExp(handle));
+  }
 });
 
 test("removes starter-only assets and keeps portfolio metadata", async () => {
@@ -59,7 +67,7 @@ test("removes starter-only assets and keeps portfolio metadata", async () => {
   ]);
 
   assert.match(page, /const projects = \[/);
-  assert.match(layout, /Websites people remember/);
+  assert.match(layout, /Websites that work\. Content that connects\./);
   assert.match(layout, /\/og\.png/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   assert.doesNotMatch(page, /SkeletonPreview|codex-preview/);

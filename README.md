@@ -1,7 +1,7 @@
 # Veer Pratap Singh — Portfolio
 
-A responsive portfolio showcasing seven websites built across hospitality,
-technology, sport, health, and food logistics.
+A responsive portfolio showcasing seven websites and two content-management
+accounts across hospitality, education, technology, sport, health, and food.
 
 **Live site:** [veer-pratap-singh-portfolio.vercel.app](https://veer-pratap-singh-portfolio.vercel.app)
 
@@ -14,6 +14,11 @@ technology, sport, health, and food logistics.
 - [CrickRoo](https://www.crickroo.com/)
 - [Hormone Nutrition Clinic](https://www.hormonenutritionclinic.com/)
 - [Tripund Technologies](https://tripundtechnologies.in/)
+
+## Content management
+
+- [Singh Laly Official](https://www.instagram.com/singhlalyofficial/)
+- [Intellia MIET](https://www.instagram.com/intellia_miet/)
 
 ## Built with
 
