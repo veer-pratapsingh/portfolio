@@ -1,4 +1,4 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
 
 const projects = [
   {
@@ -127,13 +127,13 @@ export default function Home() {
 
         <div className="hero-aside" aria-label="Portfolio summary">
           <div className="portrait-card">
-            <Image
+            <img
               src="/avatar.jpg"
               alt="Veer Pratap Singh"
               width="360"
               height="360"
-              priority
-              sizes="(max-width: 720px) 60vw, 340px"
+              loading="eager"
+              fetchPriority="high"
             />
             <span>Veer Pratap Singh</span>
           </div>
@@ -183,12 +183,12 @@ export default function Home() {
                   <span /><span /><span />
                   <p>{project.url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}</p>
                 </div>
-                <Image
+                <img
                   src={project.image}
                   alt={`${project.title} website homepage`}
                   width="1440"
                   height="900"
-                  sizes="(max-width: 720px) 100vw, (max-width: 1200px) 50vw, 92vw"
+                  loading="lazy"
                 />
                 <span className="visit-badge" aria-hidden="true">Visit site ↗</span>
               </a>
