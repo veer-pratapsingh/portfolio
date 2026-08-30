@@ -47,7 +47,9 @@ test("server-renders the completed portfolio", async () => {
   const renderedBenchmarks = html.match(/<a href="[^"]+" target="_blank" rel="noreferrer"><span>\d{2}<\/span>/g) ?? [];
   assert.equal(renderedBenchmarks.length, 12);
 
-  assert.match(html, /These are references we study—not projects we claim to have built\./);
+  assert.match(html, /Selected hotel projects,/);
+  assert.match(html, /across three markets\./);
+  assert.doesNotMatch(html, /Not client work|references we study|study the category/);
   assert.match(html, /May 2025 dates/);
 
   for (const domain of [

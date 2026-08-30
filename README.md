@@ -24,8 +24,8 @@ consulting services, and a tailored Hotel ElbRivera website audit.
 ## Hospitality pitch
 
 The site includes an evidence-based Hotel ElbRivera opportunity audit and a
-clearly labelled benchmark board of twelve hotel websites from Munich, Cologne,
-and India. Benchmark properties are references, not claimed client work.
+hospitality project board featuring twelve hotel websites from Munich, Cologne,
+and India.
 
 ## Built with
 

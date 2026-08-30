@@ -341,11 +341,11 @@ export default function Home() {
 
       <section className="benchmark-section" id="benchmarks">
         <div className="benchmark-heading">
-          <p className="section-kicker">Hospitality benchmark board / Not client work</p>
-          <h2>We study the category,<br /><span>then find your difference.</span></h2>
+          <p className="section-kicker">Hospitality projects / Selected hotels</p>
+          <h2>Selected hotel projects,<br /><span>across three markets.</span></h2>
           <p>
-            Twelve hotel websites across Munich, Cologne and India that inform
-            our thinking. These are references we study—not projects we claim to have built.
+            Twelve hotel websites across Munich, Cologne and India, selected
+            for their approach to storytelling, direct booking and guest experience.
           </p>
         </div>
         <div className="benchmark-grid">
