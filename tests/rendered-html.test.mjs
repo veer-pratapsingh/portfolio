@@ -30,17 +30,25 @@ test("server-renders the completed portfolio", async () => {
 
   const html = await response.text();
   assert.match(html, /Veer Pratap Singh/);
-  assert.match(html, /Websites that work\./);
-  assert.match(html, /Content that connects\./);
-  assert.match(html, /Websites built to perform\./);
+  assert.match(html, /Inderpreet Singh/);
+  assert.match(html, /We build brands/);
+  assert.match(html, /people choose\./);
+  assert.match(html, /The hotel has a story\./);
+  assert.match(html, /Real work, already live\./);
   assert.match(html, /More than posting\./);
-  assert.match(html, /Let’s make it/);
+  assert.match(html, /Let’s turn more interest/);
 
   const renderedProjects = html.match(/<article class="project-card/g) ?? [];
   assert.equal(renderedProjects.length, 7);
 
   const renderedContentCases = html.match(/<article class="content-case/g) ?? [];
   assert.equal(renderedContentCases.length, 2);
+
+  const renderedBenchmarks = html.match(/<a href="[^"]+" target="_blank" rel="noreferrer"><span>\d{2}<\/span>/g) ?? [];
+  assert.equal(renderedBenchmarks.length, 12);
+
+  assert.match(html, /These are references we study—not projects we claim to have built\./);
+  assert.match(html, /May 2025 dates/);
 
   for (const domain of [
     "daselb.com",
@@ -67,8 +75,10 @@ test("removes starter-only assets and keeps portfolio metadata", async () => {
   ]);
 
   assert.match(page, /const projects = \[/);
-  assert.match(layout, /Websites that work\. Content that connects\./);
+  assert.match(layout, /Veer \+ Inderpreet/);
+  assert.match(layout, /Hospitality Web, Content & Brand Partners/);
   assert.match(layout, /\/og\.png/);
+  assert.doesNotMatch(layout, /avatar\.jpg/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   assert.doesNotMatch(page, /SkeletonPreview|codex-preview/);
 

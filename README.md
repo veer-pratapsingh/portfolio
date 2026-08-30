@@ -1,7 +1,8 @@
-# Veer Pratap Singh — Portfolio
+# Veer + Inderpreet — Portfolio
 
-A responsive portfolio showcasing seven websites and two content-management
-accounts across hospitality, education, technology, sport, health, and food.
+A hospitality-focused studio portfolio for Veer Pratap Singh and Inderpreet
+Singh, showcasing seven delivered websites, two managed social brands, brand
+consulting services, and a tailored Hotel ElbRivera website audit.
 
 **Live site:** [veer-pratap-singh-portfolio.vercel.app](https://veer-pratap-singh-portfolio.vercel.app)
 
@@ -19,6 +20,12 @@ accounts across hospitality, education, technology, sport, health, and food.
 
 - [Singh Laly Official](https://www.instagram.com/singhlalyofficial/)
 - [Intellia MIET](https://www.instagram.com/intellia_miet/)
+
+## Hospitality pitch
+
+The site includes an evidence-based Hotel ElbRivera opportunity audit and a
+clearly labelled benchmark board of twelve hotel websites from Munich, Cologne,
+and India. Benchmark properties are references, not claimed client work.
 
 ## Built with
 

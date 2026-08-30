@@ -107,6 +107,61 @@ const contentWork = [
   },
 ];
 
+const hotelBenchmarks = [
+  { name: "DO & CO Hotel", city: "Munich", url: "https://www.docohotel.com/munich/en/home/", cue: "One clear luxury story" },
+  { name: "BEYOND by Geisel", city: "Munich", url: "https://www.beyond-muc.de/en/", cue: "Place-led visual identity" },
+  { name: "Pullman Munich", city: "Munich", url: "https://www.pullman-hotel-muenchen.de/", cue: "Meetings made findable" },
+  { name: "Legend Hotel", city: "Cologne", url: "https://www.legendhotel.de/en/", cue: "Rooms framed as experiences" },
+  { name: "Rhein-Hotel St. Martin", city: "Cologne", url: "https://www.rheinhotel-koeln.de/en", cue: "Direct-booking benefits" },
+  { name: "The Midtown Hotel", city: "Cologne", url: "https://themidtownhotel.de/en/", cue: "Simple room comparison" },
+  { name: "RAAS Hotels", city: "India", url: "https://www.raashotels.com/", cue: "Heritage through modern design" },
+  { name: "Seclude Hotels", city: "India", url: "https://seclude.in/", cue: "Destination discovery" },
+  { name: "Brij Hotels", city: "India", url: "https://www.brijhotels.com/hotels/all", cue: "Story-rich property portfolio" },
+  { name: "Neemrana Hotels", city: "India", url: "https://www.neemranahotels.com/", cue: "History as differentiation" },
+  { name: "The Park Hotels", city: "India", url: "https://www.theparkhotels.com/", cue: "Culture-led hospitality" },
+  { name: "The Independent Hotel Co.", city: "India", url: "https://www.theinhoco.com/", cue: "Independent hotel clarity" },
+];
+
+const auditFindings = [
+  {
+    number: "01",
+    title: "A strong location is buried",
+    text: "The Elbe, nature reserve and cycle route are genuine advantages, but long passages of copy delay the emotional reason to stay.",
+  },
+  {
+    number: "02",
+    title: "Too many routes to choose from",
+    text: "The navigation spreads rooms, packages, wellness, events, meetings and local guides across a deep hierarchy instead of five confident guest journeys.",
+  },
+  {
+    number: "03",
+    title: "Booking and enquiry feel separate",
+    text: "A third-party room flow, restaurant enquiry and meeting enquiry compete with one another. Guests need one persistent next step with the direct-booking benefit visible.",
+  },
+  {
+    number: "04",
+    title: "The event calendar loses trust",
+    text: "The 2026 calendar still displays May 2025 dates and a raw search phrase. Every event should be current, visual and directly reservable.",
+  },
+  {
+    number: "05",
+    title: "Hotel and restaurant need one story",
+    text: "Stay, dine, celebrate and meet are valuable revenue lines. A shared visual system can cross-sell them without making the experience feel crowded.",
+  },
+  {
+    number: "06",
+    title: "The message needs an editorial pass",
+    text: "Repetition, spelling issues and inconsistent travel-time claims weaken a proposition that is otherwise specific and appealing.",
+  },
+];
+
+const proposal = [
+  { title: "A conversion-led website", text: "A modern bilingual site with Stay, Eat, Celebrate, Meet and Explore at its core—plus a visible booking bar and clear room comparison." },
+  { title: "A living event calendar", text: "Current event cards with menus, availability, reservation actions and reusable templates your team can update without rebuilding a page." },
+  { title: "A hospitality content engine", text: "Monthly content direction for rooms, regional food, celebrations, business events and the Elberadweg—adapted for web, Instagram and campaigns." },
+  { title: "Brand and growth consulting", text: "Sharper positioning, direct-booking messages, seasonal campaign planning, review-led trust and measurement of enquiries and booking clicks." },
+];
+
 function ExternalArrow() {
   return <span aria-hidden="true">↗</span>;
 }
@@ -115,13 +170,14 @@ export default function Home() {
   return (
     <main>
       <header className="site-header">
-        <a className="monogram" href="#top" aria-label="Veer Pratap Singh — home">
-          V<span>/</span>PS
+        <a className="monogram" href="#top" aria-label="Veer and Inderpreet — home">
+          V<span>+</span>I
         </a>
         <nav aria-label="Primary navigation">
-          <a href="#work">Websites</a>
+          <a href="#elbrivera">ElbRivera pitch</a>
+          <a href="#work">Our work</a>
           <a href="#content">Content</a>
-          <a href="#about">About</a>
+          <a href="#studio">Studio</a>
           <a href="#contact">Contact</a>
         </nav>
         <a
@@ -138,15 +194,15 @@ export default function Home() {
         <div className="hero-copy">
           <p className="eyebrow">
             <span className="status-dot" aria-hidden="true" />
-            Web development · Content management
+            Independent brand partners · India & Germany
           </p>
           <h1>
-            Websites that work.
-            <span>Content that connects.</span>
+            We build brands
+            <span>people choose.</span>
           </h1>
           <p className="hero-intro">
-            I build high-performing digital experiences and manage social
-            content that gives brands a clear, consistent voice.
+            Veer Pratap Singh and Inderpreet Singh partner on websites, content,
+            social media management and brand consulting—with a focus on hospitality.
           </p>
           <a className="primary-button" href="#work">
             Explore selected work <span aria-hidden="true">↓</span>
@@ -154,16 +210,16 @@ export default function Home() {
         </div>
 
         <div className="hero-aside" aria-label="Portfolio summary">
-          <div className="portrait-card">
-            <img
-              src="/avatar.jpg"
-              alt="Veer Pratap Singh"
-              width="360"
-              height="360"
-              loading="eager"
-              fetchPriority="high"
-            />
-            <span>Veer Pratap Singh</span>
+          <div className="partner-card">
+            <p>Two perspectives. One connected brand.</p>
+            <div>
+              <span>01</span>
+              <strong>Veer Pratap Singh</strong>
+            </div>
+            <div>
+              <span>02</span>
+              <strong>Inderpreet Singh</strong>
+            </div>
           </div>
           <div className="hero-stat">
             <div><strong>07</strong><span>Live websites</span></div>
@@ -185,13 +241,55 @@ export default function Home() {
         </div>
       </div>
 
+      <section className="pitch-section" id="elbrivera">
+        <div className="pitch-intro">
+          <p className="section-kicker">A focused opportunity / Hotel ElbRivera</p>
+          <h2>The hotel has a story.<br /><span>The website should sell it.</span></h2>
+          <div className="pitch-summary">
+            <p>
+              ElbRivera already has what guests want: a quiet setting by the Elbe,
+              direct-booking savings, a restaurant, events and meeting space.
+              The opportunity is to turn those strengths into a faster, clearer journey.
+            </p>
+            <a href="https://www.hotel-elbrivera.de/" target="_blank" rel="noreferrer">
+              View current website <ExternalArrow />
+            </a>
+          </div>
+        </div>
+
+        <div className="audit-grid">
+          {auditFindings.map((finding) => (
+            <article key={finding.number}>
+              <span>{finding.number}</span>
+              <h3>{finding.title}</h3>
+              <p>{finding.text}</p>
+            </article>
+          ))}
+        </div>
+
+        <div className="proposal-block">
+          <div className="proposal-lead">
+            <p className="section-kicker">What we would build</p>
+            <h3>One connected guest journey—from discovery to direct booking.</h3>
+          </div>
+          <div className="proposal-list">
+            {proposal.map((item, index) => (
+              <article key={item.title}>
+                <span>0{index + 1}</span>
+                <div><h4>{item.title}</h4><p>{item.text}</p></div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="work-section" id="work">
         <div className="section-heading">
-          <p className="section-kicker">Website portfolio / 2024–26</p>
-          <h2>Websites built to perform.</h2>
+          <p className="section-kicker">Verified client work / 2024–26</p>
+          <h2>Real work, already live.</h2>
           <p>
-            Seven live websites, each shaped around a different audience,
-            industry and business goal.
+            Seven websites we delivered, including hospitality projects in
+            Germany and India. Every project below links to the live result.
           </p>
         </div>
 
@@ -241,12 +339,32 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="benchmark-section" id="benchmarks">
+        <div className="benchmark-heading">
+          <p className="section-kicker">Hospitality benchmark board / Not client work</p>
+          <h2>We study the category,<br /><span>then find your difference.</span></h2>
+          <p>
+            Twelve hotel websites across Munich, Cologne and India that inform
+            our thinking. These are references we study—not projects we claim to have built.
+          </p>
+        </div>
+        <div className="benchmark-grid">
+          {hotelBenchmarks.map((hotel, index) => (
+            <a href={hotel.url} target="_blank" rel="noreferrer" key={hotel.url}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <div><strong>{hotel.name}</strong><small>{hotel.city} · {hotel.cue}</small></div>
+              <ExternalArrow />
+            </a>
+          ))}
+        </div>
+      </section>
+
       <section className="content-section" id="content">
         <div className="content-heading">
           <p className="section-kicker light">Content management / Selected accounts</p>
           <h2>More than posting.<br /><span>Building a presence.</span></h2>
           <p>
-            From editorial planning to publishing and community, I help brands
+            From editorial planning to publishing and community, we help brands
             show up with content that feels coherent, relevant and unmistakably theirs.
           </p>
         </div>
@@ -296,7 +414,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="about-section" id="about">
+      <section className="about-section" id="studio">
         <div className="about-intro">
           <p className="section-kicker light">About / Approach</p>
           <h2>
@@ -306,9 +424,9 @@ export default function Home() {
         </div>
         <div className="about-copy">
           <p>
-            I’m Veer, a developer and content manager who turns ambitious ideas
-            into useful digital experiences. My work moves between brand,
-            story, interface and code—so every touchpoint feels connected.
+            We are Veer Pratap Singh and Inderpreet Singh—independent partners
+            working across brand strategy, websites, content and social media.
+            Together, we connect the business story with every digital touchpoint.
           </p>
           <a
             href="https://github.com/veer-pratapsingh"
@@ -338,23 +456,23 @@ export default function Home() {
       </section>
 
       <section className="contact-section" id="contact">
-        <p className="section-kicker">Have a project in mind?</p>
-        <h2>Let’s make it<br />worth remembering.</h2>
+        <p className="section-kicker">For Hotel ElbRivera</p>
+        <h2>Let’s turn more interest<br />into direct business.</h2>
         <a
           className="contact-button"
           href="https://github.com/veer-pratapsingh"
           target="_blank"
           rel="noreferrer"
         >
-          Start a conversation <ExternalArrow />
+          Discuss the proposal <ExternalArrow />
         </a>
       </section>
 
       <footer>
         <a className="monogram footer-mark" href="#top" aria-label="Back to top">
-          V<span>/</span>PS
+          V<span>+</span>I
         </a>
-        <p>Web development & content management by Veer Pratap Singh.</p>
+        <p>Web, content & brand consulting by Veer Pratap Singh + Inderpreet Singh.</p>
         <p>© 2026 · Meerut, India</p>
       </footer>
     </main>

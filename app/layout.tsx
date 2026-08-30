@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Manrope, Space_Grotesk } from "next/font/google";
-import { headers } from "next/headers";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -13,49 +12,34 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
 });
 
-export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host =
-    requestHeaders.get("x-forwarded-host") ??
-    requestHeaders.get("host") ??
-    "veer-pratap-singh-portfolio.vercel.app";
-  const protocol =
-    requestHeaders.get("x-forwarded-proto") ??
-    (host.startsWith("localhost") ? "http" : "https");
-  const socialImage = `${protocol}://${host}/og.png`;
+const socialImage = "https://veer-pratap-singh-portfolio.vercel.app/og.png";
 
-  return {
-    title: "Veer Pratap Singh — Web Developer & Content Manager",
+export const metadata: Metadata = {
+    title: "Veer + Inderpreet — Hospitality Web, Content & Brand Partners",
     description:
-      "Web development and content management portfolio of Veer Pratap Singh.",
-    icons: {
-      icon: "/avatar.jpg",
-      shortcut: "/avatar.jpg",
-      apple: "/avatar.jpg",
-    },
+      "Selected websites, content management and brand consulting by Veer Pratap Singh and Inderpreet Singh, with a focus on hospitality.",
     openGraph: {
-      title: "Veer Pratap Singh — Websites that work. Content that connects.",
+      title: "Veer + Inderpreet — Websites. Content. Brand.",
       description:
-        "Seven live websites and two managed social brands across hospitality, education, health, sport, food and technology.",
+        "Hospitality-focused digital partners building websites, content systems and brands people choose.",
       type: "website",
       images: [
         {
           url: socialImage,
-          width: 1731,
-          height: 909,
-          alt: "Veer Pratap Singh — Websites that work. Content that connects.",
+          width: 1732,
+          height: 908,
+          alt: "Veer and Inderpreet — Websites, content and brand",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Veer Pratap Singh — Websites that work. Content that connects.",
+      title: "Veer + Inderpreet — Websites. Content. Brand.",
       description:
-        "Seven live websites and two managed social brands across hospitality, education, health, sport, food and technology.",
+        "Hospitality-focused digital partners building websites, content systems and brands people choose.",
       images: [socialImage],
     },
-  };
-}
+};
 
 export default function RootLayout({
   children,
