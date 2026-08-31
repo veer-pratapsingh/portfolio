@@ -122,46 +122,6 @@ const hotelBenchmarks = [
   { name: "The Independent Hotel Co.", city: "India", url: "https://www.theinhoco.com/", cue: "Independent hotel clarity" },
 ];
 
-const auditFindings = [
-  {
-    number: "01",
-    title: "A strong location is buried",
-    text: "The Elbe, nature reserve and cycle route are genuine advantages, but long passages of copy delay the emotional reason to stay.",
-  },
-  {
-    number: "02",
-    title: "Too many routes to choose from",
-    text: "The navigation spreads rooms, packages, wellness, events, meetings and local guides across a deep hierarchy instead of five confident guest journeys.",
-  },
-  {
-    number: "03",
-    title: "Booking and enquiry feel separate",
-    text: "A third-party room flow, restaurant enquiry and meeting enquiry compete with one another. Guests need one persistent next step with the direct-booking benefit visible.",
-  },
-  {
-    number: "04",
-    title: "The event calendar loses trust",
-    text: "The 2026 calendar still displays May 2025 dates and a raw search phrase. Every event should be current, visual and directly reservable.",
-  },
-  {
-    number: "05",
-    title: "Hotel and restaurant need one story",
-    text: "Stay, dine, celebrate and meet are valuable revenue lines. A shared visual system can cross-sell them without making the experience feel crowded.",
-  },
-  {
-    number: "06",
-    title: "The message needs an editorial pass",
-    text: "Repetition, spelling issues and inconsistent travel-time claims weaken a proposition that is otherwise specific and appealing.",
-  },
-];
-
-const proposal = [
-  { title: "A conversion-led website", text: "A modern bilingual site with Stay, Eat, Celebrate, Meet and Explore at its core—plus a visible booking bar and clear room comparison." },
-  { title: "A living event calendar", text: "Current event cards with menus, availability, reservation actions and reusable templates your team can update without rebuilding a page." },
-  { title: "A hospitality content engine", text: "Monthly content direction for rooms, regional food, celebrations, business events and the Elberadweg—adapted for web, Instagram and campaigns." },
-  { title: "Brand and growth consulting", text: "Sharper positioning, direct-booking messages, seasonal campaign planning, review-led trust and measurement of enquiries and booking clicks." },
-];
-
 function ExternalArrow() {
   return <span aria-hidden="true">↗</span>;
 }
@@ -174,7 +134,7 @@ export default function Home() {
           V<span>+</span>I
         </a>
         <nav aria-label="Primary navigation">
-          <a href="#elbrivera">ElbRivera pitch</a>
+          <a href="/research">Our research</a>
           <a href="#work">Our work</a>
           <a href="#content">Content</a>
           <a href="#studio">Studio</a>
@@ -240,48 +200,6 @@ export default function Home() {
           <span>Content direction</span><b>✦</b><span>Social media</span><b>✦</b>
         </div>
       </div>
-
-      <section className="pitch-section" id="elbrivera">
-        <div className="pitch-intro">
-          <p className="section-kicker">A focused opportunity / Hotel ElbRivera</p>
-          <h2>The hotel has a story.<br /><span>The website should sell it.</span></h2>
-          <div className="pitch-summary">
-            <p>
-              ElbRivera already has what guests want: a quiet setting by the Elbe,
-              direct-booking savings, a restaurant, events and meeting space.
-              The opportunity is to turn those strengths into a faster, clearer journey.
-            </p>
-            <a href="https://www.hotel-elbrivera.de/" target="_blank" rel="noreferrer">
-              View current website <ExternalArrow />
-            </a>
-          </div>
-        </div>
-
-        <div className="audit-grid">
-          {auditFindings.map((finding) => (
-            <article key={finding.number}>
-              <span>{finding.number}</span>
-              <h3>{finding.title}</h3>
-              <p>{finding.text}</p>
-            </article>
-          ))}
-        </div>
-
-        <div className="proposal-block">
-          <div className="proposal-lead">
-            <p className="section-kicker">What we would build</p>
-            <h3>One connected guest journey—from discovery to direct booking.</h3>
-          </div>
-          <div className="proposal-list">
-            {proposal.map((item, index) => (
-              <article key={item.title}>
-                <span>0{index + 1}</span>
-                <div><h4>{item.title}</h4><p>{item.text}</p></div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="work-section" id="work">
         <div className="section-heading">
@@ -456,15 +374,13 @@ export default function Home() {
       </section>
 
       <section className="contact-section" id="contact">
-        <p className="section-kicker">For Hotel ElbRivera</p>
-        <h2>Let’s turn more interest<br />into direct business.</h2>
+        <p className="section-kicker">Start a conversation</p>
+        <h2>Let’s turn your next idea<br />into direct business.</h2>
         <a
           className="contact-button"
-          href="https://github.com/veer-pratapsingh"
-          target="_blank"
-          rel="noreferrer"
+          href="mailto:inderpreetsingh.offic@gmail.com?cc=veerrpratapsingh@gmail.com&subject=Project%20enquiry"
         >
-          Discuss the proposal <ExternalArrow />
+          Discuss a project <ExternalArrow />
         </a>
       </section>
 

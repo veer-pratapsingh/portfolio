@@ -2,13 +2,13 @@ import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
-async function render() {
+async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", {
+    new Request(`http://localhost${pathname}`, {
       headers: { accept: "text/html", host: "localhost" },
     }),
     {
@@ -33,10 +33,10 @@ test("server-renders the completed portfolio", async () => {
   assert.match(html, /Inderpreet Singh/);
   assert.match(html, /We build brands/);
   assert.match(html, /people choose\./);
-  assert.match(html, /The hotel has a story\./);
+  assert.match(html, /Our research/);
   assert.match(html, /Real work, already live\./);
   assert.match(html, /More than posting\./);
-  assert.match(html, /Let’s turn more interest/);
+  assert.match(html, /Let’s turn your next idea/);
 
   const renderedProjects = html.match(/<article class="project-card/g) ?? [];
   assert.equal(renderedProjects.length, 7);
@@ -50,7 +50,7 @@ test("server-renders the completed portfolio", async () => {
   assert.match(html, /Selected hotel projects,/);
   assert.match(html, /across three markets\./);
   assert.doesNotMatch(html, /Not client work|references we study|study the category/);
-  assert.match(html, /May 2025 dates/);
+  assert.doesNotMatch(html, /A focused opportunity \/ Hotel ElbRivera/);
 
   for (const domain of [
     "daselb.com",
@@ -67,6 +67,23 @@ test("server-renders the completed portfolio", async () => {
   for (const handle of ["singhlalyofficial", "intellia_miet"]) {
     assert.match(html, new RegExp(handle));
   }
+});
+
+test("server-renders the dedicated Hotel ElbRivera research pitch", async () => {
+  const response = await render("/research");
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+
+  const html = await response.text();
+  assert.match(html, /Our research \/ Hotel ElbRivera/);
+  assert.match(html, /From riverside stay/);
+  assert.match(html, /Website &amp; direct-booking journey/);
+  assert.match(html, /SEO &amp; GEO discoverability/);
+  assert.match(html, /Performance ads &amp; remarketing/);
+  assert.match(html, /Google presence &amp; reputation/);
+  assert.match(html, /F&amp;B Activation &amp; Event Planning/);
+  assert.match(html, /A focused first 90 days/);
+  assert.match(html, /Discuss the proposal/);
 });
 
 test("removes starter-only assets and keeps portfolio metadata", async () => {

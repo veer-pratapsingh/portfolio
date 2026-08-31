@@ -21,11 +21,15 @@ consulting services, and a tailored Hotel ElbRivera website audit.
 - [Singh Laly Official](https://www.instagram.com/singhlalyofficial/)
 - [Intellia MIET](https://www.instagram.com/intellia_miet/)
 
-## Hospitality pitch
+## Our research
 
-The site includes an evidence-based Hotel ElbRivera opportunity audit and a
-hospitality project board featuring twelve hotel websites from Munich, Cologne,
-and India.
+The dedicated `/research` page presents a client-ready Hotel ElbRivera growth
+proposal covering the direct-booking website, SEO and GEO, Google presence,
+reputation management, paid campaigns, social content, F&B activation, event
+planning and a focused 90-day implementation roadmap.
+
+The portfolio also includes a hospitality project board featuring twelve hotel
+websites from Munich, Cologne and India.
 
 ## Built with
 
