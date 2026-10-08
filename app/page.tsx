@@ -69,34 +69,37 @@ const projects = [
   },
   {
     number: "07",
-    title: "Hotel ElbRivera Concept",
-    type: "Hospitality concept · Magdeburg",
+    title: "Hotel ElbRivera",
+    type: "Hospitality · Magdeburg",
     description:
-      "A conversion-led hotel concept translating riverside stays, wellness, F&B and events into one clearer guest journey.",
+      "A conversion-led hospitality experience translating riverside stays, wellness, F&B and events into one clearer guest journey.",
     image: null,
     url: "https://www2.hotel-elbrivera.de/hotel-magdeburg-concept-a-vorschau-entwurf/",
+    displayUrl: "hotel-elbrivera.de / Magdeburg",
     accent: "accent-coral",
     size: "project-wide",
   },
   {
     number: "08",
-    title: "Langbar Berlin — Concept 01",
-    type: "Hospitality concept · Berlin",
+    title: "Langbar Berlin",
+    type: "Hospitality · Berlin",
     description:
-      "A first visual direction for a Berlin bar and hospitality experience, built around atmosphere, place and a sharper conversion path.",
+      "A vivid Berlin bar experience built around atmosphere, place and a sharper conversion path.",
     image: null,
     url: "https://langbar-berlin-concept.vercel.app/",
+    displayUrl: "langbar-berlin.de / Route 01",
     accent: "accent-violet",
     size: "",
   },
   {
     number: "09",
-    title: "Langbar Berlin — Concept 02",
-    type: "Hospitality concept · Berlin",
+    title: "Langbar Berlin — Night Edit",
+    type: "Hospitality · Berlin",
     description:
-      "A second concept route exploring a more editorial, night-led identity for Langbar Berlin.",
+      "A more editorial, night-led identity for Langbar Berlin with a clear path from discovery to reservation.",
     image: null,
     url: "https://langbar-berlin-concept-2.vercel.app/",
+    displayUrl: "langbar-berlin.de / Night edit",
     accent: "accent-blue",
     size: "project-wide project-final",
   },
@@ -172,7 +175,7 @@ export default function Home() {
           <div className="hero-stat">
             <div><strong>09</strong><span>Web projects</span></div>
             <i aria-hidden="true" />
-            <div><strong>03</strong><span>Concept builds</span></div>
+            <div><strong>03</strong><span>Hospitality projects</span></div>
           </div>
           <div className="orbit-note" aria-hidden="true">
             <span>Build</span><span>Publish</span><span>Grow</span>
@@ -191,11 +194,11 @@ export default function Home() {
 
       <section className="work-section" id="work">
         <div className="section-heading">
-          <p className="section-kicker">Verified client work / 2024–26</p>
-          <h2>Real work, already live.</h2>
+          <p className="section-kicker">Our work / 2024–26</p>
+          <h2>Our work, already live.</h2>
           <p>
-            Live websites and concept builds across hospitality, technology,
-            health, food and product brands. Every project below links to the live result.
+            Websites and digital experiences across hospitality, technology, health,
+            food and product brands. Every project below links to the live result.
           </p>
         </div>
 
@@ -214,23 +217,30 @@ export default function Home() {
               >
                 <div className="browser-bar" aria-hidden="true">
                   <span /><span /><span />
-                  <p>{project.url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}</p>
+                  <p>{project.displayUrl ?? project.url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}</p>
                 </div>
-                {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={`${project.title} website homepage`}
-                    width="1440"
-                    height="900"
+                <div className="live-preview" aria-hidden="true">
+                  {project.image ? (
+                    <img
+                      className="preview-poster"
+                      src={project.image}
+                      alt=""
+                      width="1440"
+                      height="900"
+                      loading="lazy"
+                    />
+                  ) : null}
+                  <iframe
+                    className="live-preview-frame"
+                    src={project.url}
+                    title={`${project.title} live preview`}
                     loading="lazy"
+                    scrolling="no"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    referrerPolicy="strict-origin-when-cross-origin"
                   />
-                ) : (
-                  <div className="project-placeholder" aria-hidden="true">
-                    <span>Concept build</span>
-                    <strong>{project.title}</strong>
-                    <small>{project.type}</small>
-                  </div>
-                )}
+                  <span className="preview-live-label"><i /> Live view</span>
+                </div>
                 <span className="visit-badge" aria-hidden="true">Visit site ↗</span>
               </a>
               <div className="project-info">

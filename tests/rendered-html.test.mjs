@@ -34,7 +34,9 @@ test("server-renders the completed portfolio", async () => {
   assert.match(html, /We build brands/);
   assert.match(html, /people choose\./);
   assert.match(html, /Our research/);
-  assert.match(html, /Real work, already live\./);
+  assert.match(html, /Our work, already live\./);
+  assert.match(html, /Live view/);
+  assert.match(html, /class="live-preview-frame"/);
   assert.match(html, /Let’s turn your next idea/);
 
   const renderedProjects = html.match(/<article class="project-card/g) ?? [];
@@ -49,6 +51,7 @@ test("server-renders the completed portfolio", async () => {
   assert.match(html, /Selected hotel projects,/);
   assert.match(html, /across India\./);
   assert.doesNotMatch(html, /Not client work|references we study|study the category/);
+  assert.doesNotMatch(html, /Concept build|Concept builds|concept builds/);
   assert.doesNotMatch(html, /A focused opportunity \/ Hotel ElbRivera/);
   assert.doesNotMatch(html, /Das Elb|daselb\.com|Singh Laly|Intellia|singhlalyofficial|intellia_miet|Munich|Cologne/);
 

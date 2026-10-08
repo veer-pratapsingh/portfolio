@@ -1123,20 +1123,96 @@ a {
   white-space: nowrap;
 }
 
-.project-visual > img {
-  display: block;
-  width: 100%;
+.live-preview {
+  position: relative;
   aspect-ratio: 16 / 9;
+  overflow: hidden;
   border-radius: clamp(0.65rem, 1vw, 1rem);
-  object-fit: cover;
-  object-position: top center;
+  background: #f5f4ed;
   box-shadow: 0 20px 50px rgba(17, 18, 15, 0.14);
-  transition: transform 600ms cubic-bezier(.2,.8,.2,1), filter 300ms ease;
+  isolation: isolate;
 }
 
-.project-visual:hover > img {
-  filter: saturate(1.08);
-  transform: scale(1.018);
+.preview-poster {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  filter: saturate(0.72) blur(2px);
+  opacity: 0.28;
+}
+
+.live-preview-frame {
+  position: absolute;
+  top: -9%;
+  left: -6%;
+  z-index: -1;
+  display: block;
+  width: 112%;
+  height: 120%;
+  border: 0;
+  background: #fff;
+  transform: scale(1.04) translate3d(-1%, -1%, 0);
+  transform-origin: center;
+  animation: preview-drift 18s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes preview-drift {
+  0% { transform: scale(1.04) translate3d(-1%, -1%, 0); }
+  45% { transform: scale(1.08) translate3d(-3%, -2%, 0); }
+  100% { transform: scale(1.06) translate3d(-1%, -4%, 0); }
+}
+
+.live-preview::after {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.08), transparent 35%, rgba(17, 18, 15, 0.12));
+  content: "";
+  pointer-events: none;
+}
+
+.preview-live-label {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  padding: 0.42rem 0.62rem;
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  border-radius: 999px;
+  background: rgba(17, 18, 15, 0.72);
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+}
+
+.preview-live-label i {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: #95d56b;
+  box-shadow: 0 0 0 0 rgba(149, 213, 107, 0.52);
+  animation: live-pulse 2s ease-out infinite;
+}
+
+@keyframes live-pulse {
+  70% { box-shadow: 0 0 0 6px rgba(149, 213, 107, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(149, 213, 107, 0); }
+}
+
+.project-visual:hover .live-preview-frame {
+  animation-duration: 10s;
 }
 
 .project-placeholder {
