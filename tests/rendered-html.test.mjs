@@ -34,9 +34,10 @@ test("server-renders the completed portfolio", async () => {
   assert.match(html, /We build brands/);
   assert.match(html, /people choose\./);
   assert.match(html, /Our research/);
-  assert.match(html, /Our work, already live\./);
-  assert.match(html, /Live view/);
-  assert.match(html, /class="live-preview-frame"/);
+  assert.match(html, /Our work, on the web\./);
+  assert.match(html, /Landing page/);
+  assert.match(html, /class="landing-preview-image"/);
+  assert.doesNotMatch(html, /<iframe|live-preview-frame|Live view/);
   assert.match(html, /Let’s turn your next idea/);
 
   const renderedProjects = html.match(/<article class="project-card/g) ?? [];

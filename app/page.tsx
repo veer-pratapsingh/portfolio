@@ -73,7 +73,7 @@ const projects = [
     type: "Hospitality · Magdeburg",
     description:
       "A conversion-led hospitality experience translating riverside stays, wellness, F&B and events into one clearer guest journey.",
-    image: null,
+    image: "/projects/hotel-elbrivera.png",
     url: "https://www2.hotel-elbrivera.de/hotel-magdeburg-concept-a-vorschau-entwurf/",
     displayUrl: "hotel-elbrivera.de / Magdeburg",
     accent: "accent-coral",
@@ -85,7 +85,7 @@ const projects = [
     type: "Hospitality · Berlin",
     description:
       "A vivid Berlin bar experience built around atmosphere, place and a sharper conversion path.",
-    image: null,
+    image: "/projects/langbar-berlin.png",
     url: "https://langbar-berlin-concept.vercel.app/",
     displayUrl: "langbar-berlin.de / Route 01",
     accent: "accent-violet",
@@ -97,7 +97,7 @@ const projects = [
     type: "Hospitality · Berlin",
     description:
       "A more editorial, night-led identity for Langbar Berlin with a clear path from discovery to reservation.",
-    image: null,
+    image: "/projects/langbar-berlin-night.png",
     url: "https://langbar-berlin-concept-2.vercel.app/",
     displayUrl: "langbar-berlin.de / Night edit",
     accent: "accent-blue",
@@ -195,10 +195,10 @@ export default function Home() {
       <section className="work-section" id="work">
         <div className="section-heading">
           <p className="section-kicker">Our work / 2024–26</p>
-          <h2>Our work, already live.</h2>
+          <h2>Our work, on the web.</h2>
           <p>
-            Websites and digital experiences across hospitality, technology, health,
-            food and product brands. Every project below links to the live result.
+            Landing-page previews across hospitality, technology, health, food and
+            product brands. Open any project to explore the full website.
           </p>
         </div>
 
@@ -219,29 +219,20 @@ export default function Home() {
                   <span /><span /><span />
                   <p>{project.displayUrl ?? project.url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}</p>
                 </div>
-                <div className="live-preview" aria-hidden="true">
+                <div className="landing-preview">
                   {project.image ? (
                     <img
-                      className="preview-poster"
+                      className="landing-preview-image"
                       src={project.image}
-                      alt=""
+                      alt={`${project.title} landing page`}
                       width="1440"
                       height="900"
                       loading="lazy"
                     />
                   ) : null}
-                  <iframe
-                    className="live-preview-frame"
-                    src={project.url}
-                    title={`${project.title} live preview`}
-                    loading="lazy"
-                    scrolling="no"
-                    allow="autoplay; fullscreen; picture-in-picture"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                  />
-                  <span className="preview-live-label"><i /> Live view</span>
+                  <span className="preview-label">Landing page</span>
                 </div>
-                <span className="visit-badge" aria-hidden="true">Visit site ↗</span>
+                <span className="visit-badge" aria-hidden="true">Open website ↗</span>
               </a>
               <div className="project-info">
                 <div>
@@ -255,7 +246,7 @@ export default function Home() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  View live project <ExternalArrow />
+                  Open project <ExternalArrow />
                 </a>
               </div>
             </article>
