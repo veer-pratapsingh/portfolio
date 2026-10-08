@@ -312,16 +312,13 @@ export default function ResearchPage() {
       <section className="proof-section">
         <div className="proof-card">
           <p className="section-kicker">Relevant hospitality experience</p>
-          <span className="proof-number">Das Elb / Magdeburg</span>
+          <span className="proof-number">Hospitality systems / India + Germany</span>
           <h2>We understand how a river-adjacent hotel, restaurant and event venue can tell one commercial story.</h2>
           <p>
-            Our work for Das Elb gives us practical context across hospitality web,
-            F&amp;B content and event-led promotion. That category knowledge lets us
-            move quickly while building a distinct strategy for Hotel ElbRivera.
+            Our portfolio spans hospitality websites, content systems and brand
+            direction. That category knowledge lets us move quickly while building
+            a distinct strategy for Hotel ElbRivera.
           </p>
-          <a href="https://daselb.com/" target="_blank" rel="noreferrer">
-            View Das Elb <ExternalArrow />
-          </a>
         </div>
         <aside className="operating-card">
           <p className="section-kicker">How we work</p>

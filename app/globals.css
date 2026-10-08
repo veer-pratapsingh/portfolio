@@ -1063,6 +1063,26 @@ a {
 
 .project-card {
   min-width: 0;
+  animation: project-rise 800ms cubic-bezier(.2,.8,.2,1) both;
+  transition: transform 500ms cubic-bezier(.2,.8,.2,1);
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+}
+
+.project-card:nth-child(2) { animation-delay: 90ms; }
+.project-card:nth-child(3) { animation-delay: 160ms; }
+.project-card:nth-child(4) { animation-delay: 230ms; }
+.project-card:nth-child(5) { animation-delay: 300ms; }
+.project-card:nth-child(6) { animation-delay: 370ms; }
+.project-card:nth-child(7) { animation-delay: 440ms; }
+.project-card:nth-child(8) { animation-delay: 510ms; }
+.project-card:nth-child(9) { animation-delay: 580ms; }
+
+@keyframes project-rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .project-wide {
@@ -1119,6 +1139,81 @@ a {
   transform: scale(1.018);
 }
 
+.project-placeholder {
+  position: relative;
+  display: flex;
+  min-height: 260px;
+  aspect-ratio: 16 / 9;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  padding: clamp(1.5rem, 4vw, 4rem);
+  border-radius: clamp(0.65rem, 1vw, 1rem);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--card-accent) 80%, #fff 20%), var(--card-accent));
+  color: var(--ink);
+  isolation: isolate;
+}
+
+.project-placeholder::before,
+.project-placeholder::after {
+  position: absolute;
+  z-index: -1;
+  border: 1px solid rgba(17, 18, 15, 0.24);
+  border-radius: 50%;
+  content: "";
+  transition: transform 800ms cubic-bezier(.2,.8,.2,1);
+}
+
+.project-placeholder::before {
+  top: -32%;
+  right: -8%;
+  width: 64%;
+  aspect-ratio: 1;
+}
+
+.project-placeholder::after {
+  right: 22%;
+  bottom: -42%;
+  width: 54%;
+  aspect-ratio: 1;
+}
+
+.project-visual:hover .project-placeholder::before {
+  transform: translate(-10%, 8%) scale(1.08);
+}
+
+.project-visual:hover .project-placeholder::after {
+  transform: translate(8%, -6%) scale(1.08);
+}
+
+.project-placeholder span,
+.project-placeholder small {
+  position: relative;
+  z-index: 1;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.project-placeholder strong {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0.8rem 0;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(2.1rem, 5vw, 5.2rem);
+  font-weight: 500;
+  letter-spacing: -0.07em;
+  line-height: 0.88;
+}
+
+.project-placeholder small {
+  color: rgba(17, 18, 15, 0.64);
+  letter-spacing: 0.08em;
+}
+
 .visit-badge {
   position: absolute;
   right: 2.3rem;
@@ -1149,6 +1244,9 @@ a {
 .accent-sage { --card-accent: #c9d2bc; }
 .accent-red { --card-accent: #d6a39a; }
 .accent-amber { --card-accent: #e5b956; }
+.accent-coral { --card-accent: #e58f72; }
+.accent-violet { --card-accent: #b1a2db; }
+.accent-blue { --card-accent: #9dbad3; }
 
 .project-info {
   display: grid;

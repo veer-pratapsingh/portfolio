@@ -3,17 +3,6 @@
 const projects = [
   {
     number: "01",
-    title: "Das Elb",
-    type: "Hospitality · Germany",
-    description:
-      "A destination-led hotel and restaurant experience for one of Magdeburg’s most distinctive stays.",
-    image: "/projects/daselb.png",
-    url: "https://daselb.com/",
-    accent: "accent-gold",
-    size: "project-wide",
-  },
-  {
-    number: "02",
     title: "Hotel Metropolis",
     type: "Hospitality · Srinagar",
     description:
@@ -21,10 +10,10 @@ const projects = [
     image: "/projects/hotel-metropolis.png",
     url: "https://hotelmetropolis.in/",
     accent: "accent-forest",
-    size: "",
+    size: "project-wide",
   },
   {
-    number: "03",
+    number: "02",
     title: "CrickRoo",
     type: "Sports technology",
     description:
@@ -35,7 +24,7 @@ const projects = [
     size: "",
   },
   {
-    number: "04",
+    number: "03",
     title: "Synterra Tech Labs",
     type: "Technology studio",
     description:
@@ -46,7 +35,7 @@ const projects = [
     size: "project-wide",
   },
   {
-    number: "05",
+    number: "04",
     title: "Hormone Nutrition Clinic",
     type: "Health & wellness",
     description:
@@ -57,7 +46,7 @@ const projects = [
     size: "",
   },
   {
-    number: "06",
+    number: "05",
     title: "Ambur Cold Chain",
     type: "Food & logistics",
     description:
@@ -68,7 +57,7 @@ const projects = [
     size: "",
   },
   {
-    number: "07",
+    number: "06",
     title: "Tripund Technologies",
     type: "Digital product agency",
     description:
@@ -76,44 +65,44 @@ const projects = [
     image: "/projects/tripund.png",
     url: "https://tripundtechnologies.in/",
     accent: "accent-amber",
+    size: "project-wide",
+  },
+  {
+    number: "07",
+    title: "Hotel ElbRivera Concept",
+    type: "Hospitality concept · Magdeburg",
+    description:
+      "A conversion-led hotel concept translating riverside stays, wellness, F&B and events into one clearer guest journey.",
+    image: null,
+    url: "https://www2.hotel-elbrivera.de/hotel-magdeburg-concept-a-vorschau-entwurf/",
+    accent: "accent-coral",
+    size: "project-wide",
+  },
+  {
+    number: "08",
+    title: "Langbar Berlin — Concept 01",
+    type: "Hospitality concept · Berlin",
+    description:
+      "A first visual direction for a Berlin bar and hospitality experience, built around atmosphere, place and a sharper conversion path.",
+    image: null,
+    url: "https://langbar-berlin-concept.vercel.app/",
+    accent: "accent-violet",
+    size: "",
+  },
+  {
+    number: "09",
+    title: "Langbar Berlin — Concept 02",
+    type: "Hospitality concept · Berlin",
+    description:
+      "A second concept route exploring a more editorial, night-led identity for Langbar Berlin.",
+    image: null,
+    url: "https://langbar-berlin-concept-2.vercel.app/",
+    accent: "accent-blue",
     size: "project-wide project-final",
   },
 ];
 
-const contentWork = [
-  {
-    number: "01",
-    name: "Singh Laly Official",
-    handle: "@singhlalyofficial",
-    type: "Personal brand · Food & hospitality",
-    description:
-      "Short-form content and profile management for a Germany-based chef and hospitality entrepreneur—turning food, personality and culture into a consistent social presence.",
-    image: "/content/singh-laly.jpg",
-    url: "https://www.instagram.com/singhlalyofficial/",
-    services: ["Content direction", "Reels", "Publishing", "Community"],
-    accent: "content-warm",
-  },
-  {
-    number: "02",
-    name: "Intellia MIET",
-    handle: "@intellia_miet",
-    type: "Education · AI community",
-    description:
-      "Event-led content for MIET’s AI and AI/ML departmental society—making workshops, student activity and campus momentum visible.",
-    image: "/content/intellia-2.jpg",
-    url: "https://www.instagram.com/intellia_miet/",
-    services: ["Event coverage", "Editorial planning", "Visual system", "Community"],
-    accent: "content-cool",
-  },
-];
-
 const hotelBenchmarks = [
-  { name: "DO & CO Hotel", city: "Munich", url: "https://www.docohotel.com/munich/en/home/", cue: "One clear luxury story" },
-  { name: "BEYOND by Geisel", city: "Munich", url: "https://www.beyond-muc.de/en/", cue: "Place-led visual identity" },
-  { name: "Pullman Munich", city: "Munich", url: "https://www.pullman-hotel-muenchen.de/", cue: "Meetings made findable" },
-  { name: "Legend Hotel", city: "Cologne", url: "https://www.legendhotel.de/en/", cue: "Rooms framed as experiences" },
-  { name: "Rhein-Hotel St. Martin", city: "Cologne", url: "https://www.rheinhotel-koeln.de/en", cue: "Direct-booking benefits" },
-  { name: "The Midtown Hotel", city: "Cologne", url: "https://themidtownhotel.de/en/", cue: "Simple room comparison" },
   { name: "RAAS Hotels", city: "India", url: "https://www.raashotels.com/", cue: "Heritage through modern design" },
   { name: "Seclude Hotels", city: "India", url: "https://seclude.in/", cue: "Destination discovery" },
   { name: "Brij Hotels", city: "India", url: "https://www.brijhotels.com/hotels/all", cue: "Story-rich property portfolio" },
@@ -136,7 +125,6 @@ export default function Home() {
         <nav aria-label="Primary navigation">
           <a href="/research">Our research</a>
           <a href="#work">Our work</a>
-          <a href="#content">Content</a>
           <a href="#studio">Studio</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -182,9 +170,9 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-stat">
-            <div><strong>07</strong><span>Live websites</span></div>
+            <div><strong>09</strong><span>Web projects</span></div>
             <i aria-hidden="true" />
-            <div><strong>02</strong><span>Social brands</span></div>
+            <div><strong>03</strong><span>Concept builds</span></div>
           </div>
           <div className="orbit-note" aria-hidden="true">
             <span>Build</span><span>Publish</span><span>Grow</span>
@@ -206,8 +194,8 @@ export default function Home() {
           <p className="section-kicker">Verified client work / 2024–26</p>
           <h2>Real work, already live.</h2>
           <p>
-            Seven websites we delivered, including hospitality projects in
-            Germany and India. Every project below links to the live result.
+            Live websites and concept builds across hospitality, technology,
+            health, food and product brands. Every project below links to the live result.
           </p>
         </div>
 
@@ -228,13 +216,21 @@ export default function Home() {
                   <span /><span /><span />
                   <p>{project.url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}</p>
                 </div>
-                <img
-                  src={project.image}
-                  alt={`${project.title} website homepage`}
-                  width="1440"
-                  height="900"
-                  loading="lazy"
-                />
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={`${project.title} website homepage`}
+                    width="1440"
+                    height="900"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="project-placeholder" aria-hidden="true">
+                    <span>Concept build</span>
+                    <strong>{project.title}</strong>
+                    <small>{project.type}</small>
+                  </div>
+                )}
                 <span className="visit-badge" aria-hidden="true">Visit site ↗</span>
               </a>
               <div className="project-info">
@@ -260,10 +256,10 @@ export default function Home() {
       <section className="benchmark-section" id="benchmarks">
         <div className="benchmark-heading">
           <p className="section-kicker">Hospitality projects / Selected hotels</p>
-          <h2>Selected hotel projects,<br /><span>across three markets.</span></h2>
+          <h2>Selected hotel projects,<br /><span>across India.</span></h2>
           <p>
-            Twelve hotel websites across Munich, Cologne and India, selected
-            for their approach to storytelling, direct booking and guest experience.
+            Six India-based hotel websites selected for their approach to
+            storytelling, direct booking and guest experience.
           </p>
         </div>
         <div className="benchmark-grid">
@@ -273,61 +269,6 @@ export default function Home() {
               <div><strong>{hotel.name}</strong><small>{hotel.city} · {hotel.cue}</small></div>
               <ExternalArrow />
             </a>
-          ))}
-        </div>
-      </section>
-
-      <section className="content-section" id="content">
-        <div className="content-heading">
-          <p className="section-kicker light">Content management / Selected accounts</p>
-          <h2>More than posting.<br /><span>Building a presence.</span></h2>
-          <p>
-            From editorial planning to publishing and community, we help brands
-            show up with content that feels coherent, relevant and unmistakably theirs.
-          </p>
-        </div>
-
-        <div className="content-services" aria-label="Content management services">
-          <span>Direction</span><span>Planning</span><span>Reels</span>
-          <span>Publishing</span><span>Community</span>
-        </div>
-
-        <div className="content-grid">
-          {contentWork.map((account) => (
-            <article className={`content-case ${account.accent}`} key={account.url}>
-              <a
-                className="content-visual"
-                href={account.url}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`View ${account.name} on Instagram`}
-              >
-                <div className="social-bar" aria-hidden="true">
-                  <span className="social-avatar">{account.name.slice(0, 1)}</span>
-                  <div><strong>{account.handle}</strong><small>Instagram</small></div>
-                  <b>•••</b>
-                </div>
-                <img
-                  src={account.image}
-                  alt={`${account.name} content management work`}
-                  width="1200"
-                  height="800"
-                  loading="lazy"
-                />
-                <span className="instagram-badge" aria-hidden="true">View account ↗</span>
-              </a>
-              <div className="content-info">
-                <p className="content-meta">{account.number} / {account.type}</p>
-                <h3>{account.name}</h3>
-                <p>{account.description}</p>
-                <ul aria-label={`Services provided for ${account.name}`}>
-                  {account.services.map((service) => <li key={service}>{service}</li>)}
-                </ul>
-                <a href={account.url} target="_blank" rel="noreferrer">
-                  Open on Instagram <ExternalArrow />
-                </a>
-              </div>
-            </article>
           ))}
         </div>
       </section>

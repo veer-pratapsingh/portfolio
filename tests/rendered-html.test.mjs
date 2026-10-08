@@ -35,37 +35,35 @@ test("server-renders the completed portfolio", async () => {
   assert.match(html, /people choose\./);
   assert.match(html, /Our research/);
   assert.match(html, /Real work, already live\./);
-  assert.match(html, /More than posting\./);
   assert.match(html, /Let’s turn your next idea/);
 
   const renderedProjects = html.match(/<article class="project-card/g) ?? [];
-  assert.equal(renderedProjects.length, 7);
+  assert.equal(renderedProjects.length, 9);
 
   const renderedContentCases = html.match(/<article class="content-case/g) ?? [];
-  assert.equal(renderedContentCases.length, 2);
+  assert.equal(renderedContentCases.length, 0);
 
   const renderedBenchmarks = html.match(/<a href="[^"]+" target="_blank" rel="noreferrer"><span>\d{2}<\/span>/g) ?? [];
-  assert.equal(renderedBenchmarks.length, 12);
+  assert.equal(renderedBenchmarks.length, 6);
 
   assert.match(html, /Selected hotel projects,/);
-  assert.match(html, /across three markets\./);
+  assert.match(html, /across India\./);
   assert.doesNotMatch(html, /Not client work|references we study|study the category/);
   assert.doesNotMatch(html, /A focused opportunity \/ Hotel ElbRivera/);
+  assert.doesNotMatch(html, /Das Elb|daselb\.com|Singh Laly|Intellia|singhlalyofficial|intellia_miet|Munich|Cologne/);
 
   for (const domain of [
-    "daselb.com",
     "hotelmetropolis.in",
     "ambur.co.in",
     "synterra-technologies.vercel.app",
     "crickroo.com",
     "hormonenutritionclinic.com",
     "tripundtechnologies.in",
+    "hotel-elbrivera.de",
+    "langbar-berlin-concept.vercel.app",
+    "langbar-berlin-concept-2.vercel.app",
   ]) {
     assert.match(html, new RegExp(domain.replaceAll(".", "\\.")));
-  }
-
-  for (const handle of ["singhlalyofficial", "intellia_miet"]) {
-    assert.match(html, new RegExp(handle));
   }
 });
 
