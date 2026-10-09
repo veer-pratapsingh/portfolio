@@ -50,3 +50,15 @@ npm run lint
 npm test
 npm run build:vercel
 ```
+
+## Project previews
+
+Each project card uses a 1440×900 capture of the live landing page, saved in
+three widths as `public/projects/<image>-640.webp`, `-1280.webp` and
+`-2000.webp`. After adding a project to `app/page.tsx` (or when a site
+changes), regenerate them with Chrome or Edge installed:
+
+```bash
+node tools/capture-previews.mjs            # every project
+node tools/capture-previews.mjs crickroo   # just one
+```

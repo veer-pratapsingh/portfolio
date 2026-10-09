@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Arrow } from "../arrow";
 
 export const metadata: Metadata = {
   title: "Our Research — Hotel ElbRivera Growth Proposal",
@@ -163,13 +164,11 @@ const measures = [
   "Reception questions resolved through self-service content",
 ];
 
-function ExternalArrow() {
-  return <span aria-hidden="true">↗</span>;
-}
-
 export default function ResearchPage() {
   return (
-    <main className="research-page">
+    <>
+      <a className="skip-link" href="#opportunity">Skip to the proposal</a>
+
       <header className="site-header research-header">
         <Link className="monogram" href="/" aria-label="Veer and Inderpreet — home">
           V<span>+</span>I
@@ -180,234 +179,253 @@ export default function ResearchPage() {
           <a href="#contact">Next step</a>
         </nav>
         <Link className="header-link" href="/">
-          Back to portfolio
+          <Arrow direction="left" /> Back to portfolio
         </Link>
       </header>
 
-      <section className="research-hero" id="top">
-        <div className="research-hero-copy">
+      <main className="research-page">
+        <section className="research-hero" id="top">
           <p className="section-kicker">Our research / Hotel ElbRivera</p>
           <h1>
-            From riverside stay
+            From riverside stay{" "}
             <span>to year-round destination.</span>
           </h1>
-          <p>
-            A practical growth proposal for a stronger direct-booking website,
-            a more visible restaurant and a calendar of reasons to visit in every season.
-          </p>
-          <div className="research-actions">
-            <a className="primary-button" href="#opportunity">
-              Read the opportunity <span aria-hidden="true">↓</span>
-            </a>
-            <a
-              className="research-text-link"
-              href="https://www.hotel-elbrivera.de/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              View current website <ExternalArrow />
-            </a>
-          </div>
-        </div>
-        <aside className="research-thesis" aria-label="Research thesis">
-          <span>01 / Strategic thesis</span>
-          <p>
-            Hotel ElbRivera already has the ingredients. The digital system should
-            connect stay, dine, wellness, cycling and events into measurable demand.
-          </p>
-          <div><strong>5</strong><small>connected guest journeys</small></div>
-        </aside>
-      </section>
-
-      <section className="research-opportunity" id="opportunity">
-        <div className="research-section-heading">
-          <p className="section-kicker">Where demand is leaking</p>
-          <h2>A valuable experience is being undersold online.</h2>
-          <p>
-            Our audit points to four connected issues. Solving them together can
-            increase direct demand while making the hotel easier to choose.
-          </p>
-        </div>
-        <div className="research-opportunity-grid">
-          {opportunities.map((item) => (
-            <article key={item.number}>
-              <span>{item.number}</span>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="research-proposal" id="proposal">
-        <div className="research-section-heading research-section-heading-light">
-          <p className="section-kicker">The connected growth system</p>
-          <h2>Not a new website in isolation. A better route to revenue.</h2>
-          <p>
-            Each service has a job in the guest journey—from first discovery to
-            booking, visit, review and return. We can deliver the system in phases
-            and work alongside the existing hotel team.
-          </p>
-        </div>
-        <div className="research-services">
-          {services.map((service) => (
-            <article key={service.number}>
-              <span>{service.number}</span>
-              <div>
-                <h3>{service.title}</h3>
-                <p>{service.text}</p>
-                <small>{service.outcome}</small>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="activation-section" id="activation">
-        <div className="activation-lead">
-          <p className="section-kicker">F&amp;B Activation &amp; Event Planning</p>
-          <h2>Give locals and guests a reason to come now.</h2>
-          <p>
-            Food and events should not sit behind a menu link. We would turn them
-            into named, bookable products with a calendar, creative campaign and
-            clear audience for every activation.
-          </p>
-        </div>
-        <div className="activation-grid">
-          {activationIdeas.map((idea, index) => (
-            <article key={idea.title}>
-              <span>{String(index + 1).padStart(2, "0")} / {idea.label}</span>
-              <h3>{idea.title}</h3>
-              <p>{idea.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="implementation-section" id="plan">
-        <div className="implementation-intro">
-          <p className="section-kicker">Priority implementation plan</p>
-          <h2>Four moves.<br /><span>One commercial direction.</span></h2>
-          <p>
-            This prioritisation turns the audit into action: remove friction first,
-            then create the content and campaigns that build year-round demand.
-          </p>
-        </div>
-        <div className="implementation-table" role="table" aria-label="Hotel ElbRivera implementation plan">
-          <div className="implementation-row implementation-head" role="row">
-            <span role="columnheader">Focus area</span>
-            <span role="columnheader">Immediate action</span>
-            <span role="columnheader">Business direction</span>
-          </div>
-          {implementation.map((item) => (
-            <div className="implementation-row" role="row" key={item.focus}>
-              <strong role="cell">{item.focus}</strong>
-              <p role="cell">{item.action}</p>
-              <p role="cell">{item.result}</p>
+          <div className="research-hero-copy">
+            <p>
+              A practical growth proposal for a stronger direct-booking website,
+              a more visible restaurant and a calendar of reasons to visit in every season.
+            </p>
+            <div className="research-actions">
+              <a className="primary-button" href="#opportunity">
+                Read the opportunity <Arrow direction="down" />
+              </a>
+              <a
+                className="research-text-link"
+                href="https://www.hotel-elbrivera.de/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                View current website <Arrow />
+              </a>
             </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="proof-section">
-        <div className="proof-card">
-          <p className="section-kicker">Relevant hospitality experience</p>
-          <span className="proof-number">Hospitality systems / India + Germany</span>
-          <h2>We understand how a river-adjacent hotel, restaurant and event venue can tell one commercial story.</h2>
-          <p>
-            Our portfolio spans hospitality websites, content systems and brand
-            direction. That category knowledge lets us move quickly while building
-            a distinct strategy for Hotel ElbRivera.
-          </p>
-        </div>
-        <aside className="operating-card">
-          <p className="section-kicker">How we work</p>
-          <h3>Two partners, close to the work.</h3>
-          <p>
-            Veer Pratap Singh and Inderpreet Singh combine website development,
-            content management and brand consulting. We work directly with the
-            people running the property, with short feedback loops and clear ownership.
-          </p>
-          <ul>
-            <li>Direct partner access</li>
-            <li>Bilingual-ready delivery</li>
-            <li>Flexible phased engagement</li>
-            <li>Practical monthly reporting</li>
-          </ul>
-        </aside>
-      </section>
-
-      <section className="roadmap-section" id="roadmap">
-        <div className="research-section-heading">
-          <p className="section-kicker">A focused first 90 days</p>
-          <h2>Strategy becomes visible through delivery.</h2>
-          <p>
-            The first quarter establishes the measurement, rebuilds the main guest
-            journey and launches the first demand-generating offers.
-          </p>
-        </div>
-        <div className="roadmap-grid">
-          {roadmap.map((item) => (
-            <article key={item.phase}>
-              <div><span>{item.phase}</span><small>{item.timing}</small></div>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="measurement-section">
-        <div>
-          <p className="section-kicker">What we measure</p>
-          <h2>Progress you can see—not vague marketing activity.</h2>
-          <p>
-            Before promising a forecast, we would validate the property’s current
-            analytics, booking-engine data, seasonality and advertising history.
-            The operating scorecard would then track the actions closest to revenue.
-          </p>
-        </div>
-        <ol>
-          {measures.map((measure, index) => (
-            <li key={measure}><span>{String(index + 1).padStart(2, "0")}</span>{measure}</li>
-          ))}
-        </ol>
-      </section>
-
-      <aside className="research-note">
-        <strong>Research note</strong>
-        <p>
-          This proposal is based on a public-facing review of the current website and
-          the supplied strategic audit. Traffic, booking, OTA, review and revenue data
-          should be validated with Hotel ElbRivera before targets or forecasts are set.
-        </p>
-      </aside>
-
-      <section className="research-contact" id="contact">
-        <p className="section-kicker">The next step</p>
-        <h2>Let’s turn the Elbe location into a year-round demand engine.</h2>
-        <p>
-          In a short working session, we can confirm priorities, access the right
-          business data and define a phased scope for website, growth and F&amp;B activation.
-        </p>
-        <div className="research-contact-actions">
-          <a className="contact-button" href="mailto:inderpreetsingh.offic@gmail.com?cc=veerrpratapsingh@gmail.com&subject=Hotel%20ElbRivera%20proposal">
-            Discuss the proposal <ExternalArrow />
-          </a>
-          <div>
-            <a href="tel:+4915510832303">Inderpreet · +49 155 10832303</a>
-            <a href="tel:+491634073138">Veer · +49 163 4073138</a>
           </div>
-        </div>
-      </section>
+          <aside className="research-thesis" aria-label="Research thesis">
+            <span>01 / Strategic thesis</span>
+            <p>
+              Hotel ElbRivera already has the ingredients. The digital system should
+              connect stay, dine, wellness, cycling and events into measurable demand.
+            </p>
+            <div><strong>5</strong><small>connected guest journeys</small></div>
+          </aside>
+        </section>
 
-      <footer>
-        <a className="monogram footer-mark" href="#top" aria-label="Back to top">
-          V<span>+</span>I
-        </a>
-        <p>Research and proposal by Veer Pratap Singh + Inderpreet Singh.</p>
-        <p><Link href="/">Return to portfolio</Link></p>
+        <section className="research-opportunity" id="opportunity">
+          <div className="research-section-heading">
+            <p className="section-kicker">Where demand is leaking</p>
+            <h2>A valuable experience is being undersold online.</h2>
+            <p>
+              Our audit points to four connected issues. Solving them together can
+              increase direct demand while making the hotel easier to choose.
+            </p>
+          </div>
+          <div className="research-opportunity-grid">
+            {opportunities.map((item) => (
+              <article key={item.number}>
+                <span>{item.number}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="research-proposal" id="proposal">
+          <div className="research-section-heading research-section-heading-light">
+            <p className="section-kicker">The connected growth system</p>
+            <h2>Not a new website in isolation. A better route to revenue.</h2>
+            <p>
+              Each service has a job in the guest journey—from first discovery to
+              booking, visit, review and return. We can deliver the system in phases
+              and work alongside the existing hotel team.
+            </p>
+          </div>
+          <div className="research-services">
+            {services.map((service) => (
+              <article key={service.number}>
+                <span>{service.number}</span>
+                <div>
+                  <h3>{service.title}</h3>
+                  <p>{service.text}</p>
+                  <small>{service.outcome}</small>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="activation-section" id="activation">
+          <div className="activation-lead">
+            <p className="section-kicker">F&amp;B Activation &amp; Event Planning</p>
+            <h2>Give locals and guests a reason to come now.</h2>
+            <p>
+              Food and events should not sit behind a menu link. We would turn them
+              into named, bookable products with a calendar, creative campaign and
+              clear audience for every activation.
+            </p>
+          </div>
+          <div className="activation-grid">
+            {activationIdeas.map((idea, index) => (
+              <article key={idea.title}>
+                <span>{String(index + 1).padStart(2, "0")} / {idea.label}</span>
+                <h3>{idea.title}</h3>
+                <p>{idea.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="implementation-section" id="plan">
+          <div className="implementation-intro">
+            <p className="section-kicker">Priority implementation plan</p>
+            <h2>Four moves.<br /><span>One commercial direction.</span></h2>
+            <p>
+              This prioritisation turns the audit into action: remove friction first,
+              then create the content and campaigns that build year-round demand.
+            </p>
+          </div>
+          <div className="implementation-table" role="table" aria-label="Hotel ElbRivera implementation plan">
+            <div className="implementation-row implementation-head" role="row">
+              <span role="columnheader">Focus area</span>
+              <span role="columnheader">Immediate action</span>
+              <span role="columnheader">Business direction</span>
+            </div>
+            {implementation.map((item) => (
+              <div className="implementation-row" role="row" key={item.focus}>
+                <strong role="cell">{item.focus}</strong>
+                <p role="cell" data-label="Immediate action">{item.action}</p>
+                <p role="cell" data-label="Business direction">{item.result}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="proof-section">
+          <div className="proof-card">
+            <p className="section-kicker">Relevant hospitality experience</p>
+            <span className="proof-number">Hospitality systems / India + Germany</span>
+            <h2>We understand how a river-adjacent hotel, restaurant and event venue can tell one commercial story.</h2>
+            <p>
+              Our portfolio spans hospitality websites, content systems and brand
+              direction. That category knowledge lets us move quickly while building
+              a distinct strategy for Hotel ElbRivera.
+            </p>
+          </div>
+          <aside className="operating-card">
+            <p className="section-kicker">How we work</p>
+            <h3>Two partners, close to the work.</h3>
+            <p>
+              Veer Pratap Singh and Inderpreet Singh combine website development,
+              content management and brand consulting. We work directly with the
+              people running the property, with short feedback loops and clear ownership.
+            </p>
+            <ul>
+              <li>Direct partner access</li>
+              <li>Bilingual-ready delivery</li>
+              <li>Flexible phased engagement</li>
+              <li>Practical monthly reporting</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section className="roadmap-section" id="roadmap">
+          <div className="research-section-heading">
+            <p className="section-kicker">A focused first 90 days</p>
+            <h2>Strategy becomes visible through delivery.</h2>
+            <p>
+              The first quarter establishes the measurement, rebuilds the main guest
+              journey and launches the first demand-generating offers.
+            </p>
+          </div>
+          <div className="roadmap-grid">
+            {roadmap.map((item) => (
+              <article key={item.phase}>
+                <div><span>{item.phase}</span><small>{item.timing}</small></div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="measurement-section">
+          <div>
+            <p className="section-kicker">What we measure</p>
+            <h2>Progress you can see—not vague marketing activity.</h2>
+            <p>
+              Before promising a forecast, we would validate the property’s current
+              analytics, booking-engine data, seasonality and advertising history.
+              The operating scorecard would then track the actions closest to revenue.
+            </p>
+          </div>
+          <ol>
+            {measures.map((measure, index) => (
+              <li key={measure}><span>{String(index + 1).padStart(2, "0")}</span>{measure}</li>
+            ))}
+          </ol>
+        </section>
+
+        <aside className="research-note">
+          <strong>Research note</strong>
+          <p>
+            This proposal is based on a public-facing review of the current website and
+            the supplied strategic audit. Traffic, booking, OTA, review and revenue data
+            should be validated with Hotel ElbRivera before targets or forecasts are set.
+          </p>
+        </aside>
+
+        <section className="research-contact" id="contact">
+          <p className="section-kicker">The next step</p>
+          <h2>Let’s turn the Elbe location into a <span>year-round</span> demand engine.</h2>
+          <p>
+            In a short working session, we can confirm priorities, access the right
+            business data and define a phased scope for website, growth and F&amp;B activation.
+          </p>
+          <div className="research-contact-actions">
+            <a className="contact-button" href="mailto:inderpreetsingh.offic@gmail.com?cc=veerrpratapsingh@gmail.com&subject=Hotel%20ElbRivera%20proposal">
+              Discuss the proposal <Arrow />
+            </a>
+            <div>
+              <a href="tel:+4915510832303">Inderpreet · +49 155 10832303</a>
+              <a href="tel:+491634073138">Veer · +49 163 4073138</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="site-footer">
+        <div className="footer-brand">
+          <a className="monogram footer-mark" href="#top" aria-label="Back to top">
+            V<span>+</span>I
+          </a>
+          <p>Research and proposal by Veer Pratap Singh + Inderpreet Singh.</p>
+        </div>
+        <nav aria-label="Footer navigation">
+          <a href="#opportunity">Opportunity</a>
+          <a href="#proposal">Proposal</a>
+          <a href="#plan">Implementation plan</a>
+          <a href="#roadmap">First 90 days</a>
+        </nav>
+        <div className="footer-connect">
+          <Link href="/">Return to portfolio</Link>
+          <a href="https://www.hotel-elbrivera.de/" target="_blank" rel="noreferrer">
+            Hotel ElbRivera <Arrow />
+          </a>
+        </div>
+        <p className="footer-legal">
+          <span>© 2026 · Meerut, India</span>
+          <a href="#top">Back to top <Arrow direction="up" /></a>
+        </p>
       </footer>
-    </main>
+    </>
   );
 }
