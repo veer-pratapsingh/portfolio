@@ -103,6 +103,42 @@ const projects = [
     accent: "accent-blue",
     size: "project-wide project-final",
   },
+  {
+    number: "10",
+    title: "Ratswaage Hotel Magdeburg",
+    type: "Hospitality · Magdeburg",
+    description:
+      "A refined hotel landing page balancing its dual promise of focused work and restorative rest.",
+    image: "/projects/ratswaage-hotel.png",
+    url: "https://ratswaage-hotel-magdeburg.vercel.app/",
+    displayUrl: "ratswaage-hotel.de / Magdeburg",
+    accent: "accent-forest",
+    size: "project-wide",
+  },
+  {
+    number: "11",
+    title: "Hotel Golden Pearl",
+    type: "Hospitality · Magdeburg",
+    description:
+      "A warm, premium hotel experience presenting rooms, dining and direct booking with a clear editorial rhythm.",
+    image: "/projects/hotel-golden-pearl.png",
+    url: "https://hotel-golden-pearl.vercel.app/",
+    displayUrl: "golden-pearl.de / Magdeburg",
+    accent: "accent-gold",
+    size: "",
+  },
+  {
+    number: "12",
+    title: "AFS National AI Hackathon",
+    type: "AI innovation · Hackathon",
+    description:
+      "A focused access experience for the AFS National AI Hackathon, with a clear entry point for teams and invited reviewers.",
+    image: "/projects/afs-national-ai-hackathon.png",
+    url: "https://afsnationalaihackathon.vercel.app/",
+    displayUrl: "afs-hackathon / platform",
+    accent: "accent-blue",
+    size: "project-wide project-final",
+  },
 ];
 
 const hotelBenchmarks = [
@@ -173,9 +209,9 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-stat">
-            <div><strong>09</strong><span>Web projects</span></div>
+            <div><strong>12</strong><span>Web projects</span></div>
             <i aria-hidden="true" />
-            <div><strong>03</strong><span>Hospitality projects</span></div>
+            <div><strong>06</strong><span>Hospitality projects</span></div>
           </div>
           <div className="orbit-note" aria-hidden="true">
             <span>Build</span><span>Publish</span><span>Grow</span>

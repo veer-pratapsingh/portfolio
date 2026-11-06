@@ -17,6 +17,9 @@ and a tailored Hotel ElbRivera website audit.
 - [Hotel ElbRivera](https://www2.hotel-elbrivera.de/hotel-magdeburg-concept-a-vorschau-entwurf/)
 - [Langbar Berlin](https://langbar-berlin-concept.vercel.app/)
 - [Langbar Berlin — Night Edit](https://langbar-berlin-concept-2.vercel.app/)
+- [Ratswaage Hotel Magdeburg](https://ratswaage-hotel-magdeburg.vercel.app/)
+- [Hotel Golden Pearl](https://hotel-golden-pearl.vercel.app/)
+- [AFS National AI Hackathon](https://afsnationalaihackathon.vercel.app/)
 
 ## Our research
 
