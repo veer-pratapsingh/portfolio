@@ -138,7 +138,7 @@ const projects = [
     url: "https://afsnationalaihackathon.vercel.app/",
     displayUrl: "afs-hackathon / platform",
     accent: "accent-blue",
-    size: "project-wide",
+    size: "",
   },
 ];
 
@@ -349,7 +349,7 @@ export default function Home() {
             </h2>
           </div>
           <div className="partner-card">
-            <p>Two perspectives. One connected brand.</p>
+            <p>Two perspectives.<br /> One connected brand.</p>
             <div>
               <span>01</span>
               <strong>Veer Pratap Singh</strong>
@@ -370,7 +370,7 @@ export default function Home() {
               target="_blank"
               rel="noreferrer"
             >
-              See how I build on GitHub <Arrow />
+              See Veer’s code on GitHub <Arrow />
             </a>
           </div>
           <div className="process-grid">

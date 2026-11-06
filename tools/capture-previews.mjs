@@ -15,7 +15,8 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const viewport = { width: 1440, height: 900 };
 const widths = [640, 1280, 2000];
-const settleMs = Number(process.env.SETTLE_MS ?? 9000);
+// Hotel Golden Pearl's intro is still dark at 9s; 20s captures its finished hero.
+const settleMs = Number(process.env.SETTLE_MS ?? 20000);
 
 const browserPath = [
   process.env.CHROME_PATH,

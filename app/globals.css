@@ -50,6 +50,11 @@ h2,
 h3 {
   font-family: var(--font-display), "Iowan Old Style", "Times New Roman", serif;
   font-weight: 400;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 a {
@@ -178,7 +183,15 @@ a:hover .arrow {
   font-weight: 500;
   line-height: 1;
   white-space: nowrap;
-  transition: background-color 300ms ease, border-color 300ms ease, color 300ms ease;
+  transition: background-color 300ms ease, border-color 300ms ease, color 300ms ease,
+    transform 200ms var(--ease-out);
+}
+
+.primary-button:active,
+.ghost-button:active,
+.contact-button:active,
+.header-link:active {
+  transform: translateY(1px) scale(0.98);
 }
 
 .primary-button,
@@ -536,6 +549,7 @@ a:hover .arrow {
 .accent-river { --card-accent: #3f7880; }
 .accent-brass { --card-accent: #b08a4a; }
 .accent-bronze { --card-accent: #7d5a2c; }
+.accent-blue { --card-accent: #3f5f8f; }
 
 .browser-frame {
   container-type: inline-size;
@@ -661,6 +675,18 @@ a:hover .arrow {
   display: grid;
   justify-items: start;
   gap: 0.9rem;
+}
+
+/* Paired cards: "Open project" sits on one line even when titles wrap differently. */
+.project-card:not(.project-wide) .project-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.project-card:not(.project-wide) .project-link {
+  margin-top: auto;
 }
 
 .project-meta {
@@ -931,7 +957,6 @@ a:hover .arrow {
 }
 
 .partner-card > p {
-  max-width: 15ch;
   margin: 0 0 clamp(2.5rem, 5vw, 4.5rem);
   font-family: var(--font-display), "Times New Roman", serif;
   font-size: clamp(1.9rem, 2.8vw, 2.7rem);
