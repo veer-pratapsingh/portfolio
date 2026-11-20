@@ -459,7 +459,7 @@ a:hover .arrow {
   background: linear-gradient(rgba(245, 245, 243, 0.62), rgba(245, 245, 243, 0.84));
 }
 
-a.feature-panel:hover::after {
+.feature-panel:hover::after {
   opacity: 0.7;
 }
 
@@ -524,7 +524,7 @@ a.feature-panel:hover::after {
   color: var(--accent-ink);
 }
 
-/* Projects without a live demo show in-app screenshots instead. */
+/* Projects without a live demo show in-app screenshots instead of demo links. */
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

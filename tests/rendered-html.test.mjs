@@ -37,10 +37,12 @@ test("server-renders the personal portfolio", async () => {
   assert.equal((html.match(/<article class="feature"/g) ?? []).length, 3);
   assert.equal((html.match(/class="index-row"/g) ?? []).length, 4);
 
-  // The simulator has no public demo, so it shows six screenshots and no role or team lines.
+  // The simulator has no public demo: its panel opens the walkthrough video on Google Drive,
+  // six screenshots replace the demo links, and the page itself embeds no video.
   assert.match(html, /Smart Biogas Plant Simulator/);
+  assert.match(html, /href="https:\/\/drive\.google\.com\/file\/d\/1XJvr3XGzMu6auL3XcvDhj-LL_fNnRuxe\/view/);
   assert.equal((html.match(/<figure>/g) ?? []).length, 6);
-  assert.doesNotMatch(html, /My part|feature-facts/);
+  assert.doesNotMatch(html, /<video|My part|feature-facts/);
 
   // Every preview image the page references is in public/.
   for (const url of new Set(html.match(/\/projects\/[\w/-]+\.webp/g))) {

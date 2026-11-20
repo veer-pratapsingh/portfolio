@@ -44,7 +44,9 @@ const featured = [
     description:
       "A walkable 3D biogas plant that teaches anaerobic digestion. A narrated tour leads through six stations: choose a feedstock, prepare the slurry, set the digester, store the gas, separate the digestate and turn biogas into power and heat. Every setting changes the estimated gas output live.",
     image: "biogas-simulator",
-    // A Windows app with no public demo, so it shows in-app screenshots instead of links.
+    // A Windows app with no public demo: the panel opens a walkthrough video instead, and
+    // screenshots replace the demo links. Not named `url`, so capture-previews.mjs skips it.
+    video: "https://drive.google.com/file/d/1XJvr3XGzMu6auL3XcvDhj-LL_fNnRuxe/view?usp=sharing",
     badge: "Windows app",
     gallery: [
       {
@@ -292,10 +294,19 @@ export default function Home() {
             <span>2023–26</span>
           </div>
 
-          {featured.map((project, index) => {
-            const panelClass = project.light ? "feature-panel is-light" : "feature-panel";
-            const panel = (
-              <>
+          {featured.map((project, index) => (
+            <article className="feature" key={project.title}>
+              <a
+                className={project.light ? "feature-panel is-light" : "feature-panel"}
+                href={project.url ?? project.video}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={
+                  project.url
+                    ? `Open the live demo of ${project.title}`
+                    : `Watch a walkthrough video of the ${project.title}`
+                }
+              >
                 <img
                   src={`/projects/${project.image}-1280.webp`}
                   srcSet={previewSrcSet(project.image)}
@@ -314,96 +325,78 @@ export default function Home() {
                 </span>
                 {/* The award panel dissolves into the orange band below it. */}
                 {project.award && <PixelTransition fill={orange} />}
-              </>
-            );
+              </a>
 
-            return (
-              <article className="feature" key={project.title}>
-                {project.url ? (
-                  <a
-                    className={panelClass}
-                    href={project.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`Open the live demo of ${project.title}`}
-                  >
-                    {panel}
-                  </a>
-                ) : (
-                  <div className={panelClass}>{panel}</div>
-                )}
-
-                {project.award ? (
-                  <div className="award">
-                    <div className="award-head">
-                      <p className="sq">Winner</p>
-                      <p>{project.type}</p>
-                      <p>{project.awardNote}</p>
-                    </div>
-                    <p className="award-title">{project.award}</p>
-                    <dl className="award-stats">
-                      {project.stats?.map((stat) => (
-                        <div key={stat.label}>
-                          <dt>{stat.label}</dt>
-                          <dd>{stat.value}</dd>
-                        </div>
-                      ))}
-                    </dl>
-                    <div className="award-body">
-                      <p>{project.description}</p>
-                      <div className="feature-links">
-                        <a className="text-link" href={project.url} target="_blank" rel="noreferrer">
-                          Live demo <Arrow />
-                        </a>
-                        <a className="text-link" href={project.code} target="_blank" rel="noreferrer">
-                          Code <Arrow />
-                        </a>
-                      </div>
-                    </div>
+              {project.award ? (
+                <div className="award">
+                  <div className="award-head">
+                    <p className="sq">Winner</p>
+                    <p>{project.type}</p>
+                    <p>{project.awardNote}</p>
                   </div>
-                ) : (
-                  <div className="feature-body">
-                    <p>{project.description}</p>
-                    {project.url && (
-                      <div className="feature-links">
-                        <a className="text-link" href={project.url} target="_blank" rel="noreferrer">
-                          Live demo <Arrow />
-                        </a>
-                        <a className="text-link" href={project.code} target="_blank" rel="noreferrer">
-                          Code <Arrow />
-                        </a>
+                  <p className="award-title">{project.award}</p>
+                  <dl className="award-stats">
+                    {project.stats?.map((stat) => (
+                      <div key={stat.label}>
+                        <dt>{stat.label}</dt>
+                        <dd>{stat.value}</dd>
                       </div>
-                    )}
-                  </div>
-                )}
-
-                {project.gallery && (
-                  <ul className="gallery" aria-label={`Screenshots of the ${project.title}`}>
-                    {project.gallery.map((shot) => (
-                      <li key={shot.image}>
-                        <figure>
-                          <img
-                            src={`/projects/${shot.image}-1280.webp`}
-                            srcSet={previewSrcSet(shot.image, [640, 1280])}
-                            sizes="(max-width: 760px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                            alt={shot.alt}
-                            width="1280"
-                            height="720"
-                            loading="lazy"
-                            decoding="async"
-                          />
-                          <figcaption>
-                            <span>{shot.label}</span>
-                            {shot.caption}
-                          </figcaption>
-                        </figure>
-                      </li>
                     ))}
-                  </ul>
-                )}
-              </article>
-            );
-          })}
+                  </dl>
+                  <div className="award-body">
+                    <p>{project.description}</p>
+                    <div className="feature-links">
+                      <a className="text-link" href={project.url} target="_blank" rel="noreferrer">
+                        Live demo <Arrow />
+                      </a>
+                      <a className="text-link" href={project.code} target="_blank" rel="noreferrer">
+                        Code <Arrow />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="feature-body">
+                  <p>{project.description}</p>
+                  {project.url && (
+                    <div className="feature-links">
+                      <a className="text-link" href={project.url} target="_blank" rel="noreferrer">
+                        Live demo <Arrow />
+                      </a>
+                      <a className="text-link" href={project.code} target="_blank" rel="noreferrer">
+                        Code <Arrow />
+                      </a>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {project.gallery && (
+                <ul className="gallery" aria-label={`Screenshots of the ${project.title}`}>
+                  {project.gallery.map((shot) => (
+                    <li key={shot.image}>
+                      <figure>
+                        <img
+                          src={`/projects/${shot.image}-1280.webp`}
+                          srcSet={previewSrcSet(shot.image, [640, 1280])}
+                          sizes="(max-width: 760px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          alt={shot.alt}
+                          width="1280"
+                          height="720"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <figcaption>
+                          <span>{shot.label}</span>
+                          {shot.caption}
+                        </figcaption>
+                      </figure>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </article>
+          ))}
 
           <ul className="index">
             {projects.map((project, index) => {

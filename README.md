@@ -59,7 +59,8 @@ node tools/capture-previews.mjs md-forge   # just one
 
 The biogas simulator is a Windows app with no web demo, so its panel
 (`biogas-simulator-*.webp`) and gallery (`public/projects/biogas/`) are in-app
-screenshots from the Unity project's `Pictures` folder. Gallery shots are
+screenshots from the Unity project's `Pictures` folder, and the panel links to
+the walkthrough video on Google Drive. Gallery shots are
 centre-cropped to 16:9 at 640 and 1280 px, for example:
 
 ```bash
