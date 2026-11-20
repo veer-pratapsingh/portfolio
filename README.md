@@ -14,6 +14,7 @@ The old `/research` link on this domain forwards there (see `vercel.json`).
 
 - [AFS In-line Spectroscopy Assistant](https://afsnationalaihackathon.vercel.app/) ([code](https://github.com/Adarshpandey2003/afs_national_ai_hackathon))
 - [md forge](https://md-forge-teal.vercel.app/) ([code](https://github.com/veer-pratapsingh/md-forge))
+- Smart Biogas Plant Simulator (Unity 6 team project; screenshots on the site)
 - [Fairness in LLM-based learning recommendation](https://github.com/veer-pratapsingh/HCAI-fairness-recsys)
 - [Airline satisfaction MLOps pipeline](https://github.com/veer-pratapsingh/airline-satisfaction-mlops) (team project)
 - [Focus Guardian](https://github.com/veer-pratapsingh/focus-guardian)
@@ -54,4 +55,15 @@ changes), regenerate them with Chrome or Edge installed:
 ```bash
 node tools/capture-previews.mjs            # every featured project
 node tools/capture-previews.mjs md-forge   # just one
+```
+
+The biogas simulator is a Windows app with no web demo, so its panel
+(`biogas-simulator-*.webp`) and gallery (`public/projects/biogas/`) are in-app
+screenshots from the Unity project's `Pictures` folder. Gallery shots are
+centre-cropped to 16:9 at 640 and 1280 px, for example:
+
+```bash
+ffmpeg -nostdin -i "Comparison Screen.png" \
+  -vf "crop='min(iw,ih*16/9)':'min(ih,iw*9/16)',scale=1280:720:flags=lanczos,format=yuv420p" \
+  -c:v libwebp -quality 78 -compression_level 6 public/projects/biogas/run-comparison-1280.webp
 ```

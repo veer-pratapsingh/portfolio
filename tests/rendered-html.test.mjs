@@ -33,9 +33,19 @@ test("server-renders the personal portfolio", async () => {
   assert.match(html, /Open to Werkstudent roles/);
   assert.match(html, /I build AI that ships/);
 
-  // Two live-demo panels plus four indexed projects.
-  assert.equal((html.match(/<article class="feature"/g) ?? []).length, 2);
+  // Two live-demo panels, the biogas simulator panel and four indexed projects.
+  assert.equal((html.match(/<article class="feature"/g) ?? []).length, 3);
   assert.equal((html.match(/class="index-row"/g) ?? []).length, 4);
+
+  // The simulator has no public demo, so it states the team role and shows six screenshots.
+  assert.match(html, /Smart Biogas Plant Simulator/);
+  assert.match(html, /modified Gompertz kinetics/);
+  assert.equal((html.match(/<figure>/g) ?? []).length, 6);
+
+  // Every preview image the page references is in public/.
+  for (const url of new Set(html.match(/\/projects\/[\w/-]+\.webp/g))) {
+    await access(new URL(`../public${url}`, import.meta.url));
+  }
 
   for (const text of ["Swaja Robotics", "talk2move", "UMUN Tech", "IIT Kanpur", "Otto von Guericke University Magdeburg"]) {
     assert.match(html, new RegExp(text));

@@ -64,6 +64,8 @@ h3,
 .hero-bar,
 .statement-label,
 .feature-meta,
+.feature-facts dt,
+.gallery figcaption span,
 .text-link,
 .index-number,
 .index-stack,
@@ -458,7 +460,7 @@ a:hover .arrow {
   background: linear-gradient(rgba(245, 245, 243, 0.62), rgba(245, 245, 243, 0.84));
 }
 
-.feature-panel:hover::after {
+a.feature-panel:hover::after {
   opacity: 0.7;
 }
 
@@ -521,6 +523,64 @@ a:hover .arrow {
 
 .text-link:hover {
   color: var(--accent-ink);
+}
+
+/* Team projects without a live demo say who did what, then show in-app screenshots. */
+.feature-facts {
+  display: grid;
+  gap: 1.25rem;
+  margin: 0;
+}
+
+.feature-facts div {
+  display: grid;
+  gap: 0.4rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+
+.feature-facts dt {
+  color: var(--accent-ink);
+}
+
+.feature-facts dd {
+  max-width: 62ch;
+  margin: 0;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(2rem, 3.5vw, 3rem) clamp(0.75rem, 1.4vw, 1.25rem);
+  margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+  padding: 0 var(--gutter);
+  list-style: none;
+}
+
+.gallery figure {
+  margin: 0;
+}
+
+.gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--dark);
+}
+
+.gallery figcaption {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.9rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.gallery figcaption span {
+  color: var(--ink);
 }
 
 /* Award band: the AFS panel dissolves into it, so it sits flush below the panel. */
@@ -1087,6 +1147,21 @@ a.index-row:hover .index-cta {
     .about-heading span:nth-child(2) {
       animation-name: drift-right;
     }
+
+    /* Screenshots rise in as they enter, a beat apart across each row. */
+    .gallery li {
+      animation: rise-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+
+    .gallery li:nth-child(3n + 2) {
+      animation-range: entry 10% entry 80%;
+    }
+
+    .gallery li:nth-child(3n) {
+      animation-range: entry 20% entry 90%;
+    }
   }
 }
 
@@ -1105,7 +1180,8 @@ a.index-row:hover .index-cta {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .award-stats {
+  .award-stats,
+  .gallery {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1166,7 +1242,8 @@ a.index-row:hover .index-cta {
 
   .hero-columns,
   .statement,
-  .spec > div {
+  .spec > div,
+  .gallery {
     grid-template-columns: minmax(0, 1fr);
   }
 

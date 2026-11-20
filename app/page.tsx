@@ -5,7 +5,7 @@ import { Letters } from "./letters";
 import { PixelTransition } from "./pixel-transition";
 
 // Content follows the curated "Selected work" on the GitHub profile and the generic CV.
-// Projects with a live demo get a full-width panel; the rest are listed in the index.
+// Live demos and the biogas simulator get a full-width panel; the rest are listed in the index.
 const featured = [
   {
     title: "AFS In-line Spectroscopy Assistant",
@@ -36,6 +36,56 @@ const featured = [
     code: "https://github.com/veer-pratapsingh/md-forge",
     // The md forge UI is light, so it gets a pale overlay and a black title.
     light: true,
+  },
+  {
+    title: "Smart Biogas Plant Simulator",
+    type: "Team project · OVGU 2026",
+    stack: "Unity 6, C#, process simulation",
+    description:
+      "A walkable 3D biogas plant that teaches anaerobic digestion. A narrated tour leads through six stations: choose a feedstock, prepare the slurry, set the digester, store the gas, separate the digestate and turn biogas into power and heat. Every setting changes the estimated gas output live.",
+    image: "biogas-simulator",
+    // A Windows app with no public demo: the panel shows who did what and in-app screenshots.
+    badge: "Windows app",
+    role: "Modelled gas production with modified Gompertz kinetics in one shared calculation model, kept the mass balance consistent across the interface and reports, and implemented the live process controls.",
+    team: "Six students from chemical and energy engineering, digital engineering and data and knowledge engineering · ten supervisor-reviewed sprints",
+    gallery: [
+      {
+        image: "biogas/feedstock",
+        label: "Station 1 · Feedstock",
+        caption: "Pick one of five feedstocks, compared by gas yield, cost and sustainability.",
+        alt: "Feedstock selection table in front of the storage tank and hopper",
+      },
+      {
+        image: "biogas/pretreatment",
+        label: "Station 2 · Pretreatment",
+        caption: "Add process water until the slurry is pumpable, at about 10% solids.",
+        alt: "Pretreatment control panel with a water slider and slurry readings",
+      },
+      {
+        image: "biogas/digester-settings",
+        label: "Station 3 · Digester settings",
+        caption: "Set temperature, pH, organic loading and retention time; the estimates update live.",
+        alt: "Digester settings with four sliders, process readings and estimated outputs",
+      },
+      {
+        image: "biogas/digester-run",
+        label: "Station 3 · Digester run",
+        caption: "A cutaway shows the fill level, heating and mixing while a monitor tracks the gas.",
+        alt: "Night view of the digester cutaway with heating coils and a live monitor",
+      },
+      {
+        image: "biogas/separator",
+        label: "Station 5 · Separator",
+        caption: "A screw press splits the leftover digestate into solid fibre and liquid.",
+        alt: "Digestate separator with a screw press and labelled solid and liquid outputs",
+      },
+      {
+        image: "biogas/run-comparison",
+        label: "Results",
+        caption: "Every run is saved, ranked and charted, and can be exported as CSV.",
+        alt: "Run comparison dashboard with yield charts, a radar chart and a ranked table",
+      },
+    ],
   },
 ];
 
@@ -140,7 +190,7 @@ const toolbox = [
   { label: "Data & cloud", items: "SQL, PostgreSQL, Supabase, ETL/ELT, MQTT, AWS, Azure, Power BI, Tableau" },
   {
     label: "Languages & web",
-    items: "Python, TypeScript, JavaScript, C/C++, C#, React, Next.js, Node.js, Express, Electron",
+    items: "Python, TypeScript, JavaScript, C/C++, C# (Unity), React, Next.js, Node.js, Express, Electron",
   },
   {
     label: "Certifications",
@@ -165,8 +215,8 @@ const ink = "#0b0b0b";
 // Every preview ships in three widths; the browser picks the sharpest one it needs.
 const previewWidths = [640, 1280, 2000];
 
-function previewSrcSet(image: string) {
-  return previewWidths.map((width) => `/projects/${image}-${width}.webp ${width}w`).join(", ");
+function previewSrcSet(image: string, widths = previewWidths) {
+  return widths.map((width) => `/projects/${image}-${width}.webp ${width}w`).join(", ");
 }
 
 const pad = (n: number) => String(n).padStart(2, "0");
@@ -244,15 +294,10 @@ export default function Home() {
             <span>2023–26</span>
           </div>
 
-          {featured.map((project, index) => (
-            <article className="feature" key={project.title}>
-              <a
-                className={project.light ? "feature-panel is-light" : "feature-panel"}
-                href={project.url}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`Open the live demo of ${project.title}`}
-              >
+          {featured.map((project, index) => {
+            const panelClass = project.light ? "feature-panel is-light" : "feature-panel";
+            const panel = (
+              <>
                 <img
                   src={`/projects/${project.image}-1280.webp`}
                   srcSet={previewSrcSet(project.image)}
@@ -267,55 +312,111 @@ export default function Home() {
                 <span className="feature-meta">
                   <span>{pad(index + 1)} / {project.type}</span>
                   <span className="sq">{project.stack}</span>
-                  <span className="sq">Live demo</span>
+                  <span className="sq">{project.badge ?? "Live demo"}</span>
                 </span>
                 {/* The award panel dissolves into the orange band below it. */}
                 {project.award && <PixelTransition fill={orange} />}
-              </a>
+              </>
+            );
 
-              {project.award ? (
-                <div className="award">
-                  <div className="award-head">
-                    <p className="sq">Winner</p>
-                    <p>{project.type}</p>
-                    <p>{project.awardNote}</p>
-                  </div>
-                  <p className="award-title">{project.award}</p>
-                  <dl className="award-stats">
-                    {project.stats?.map((stat) => (
-                      <div key={stat.label}>
-                        <dt>{stat.label}</dt>
-                        <dd>{stat.value}</dd>
+            return (
+              <article className="feature" key={project.title}>
+                {project.url ? (
+                  <a
+                    className={panelClass}
+                    href={project.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Open the live demo of ${project.title}`}
+                  >
+                    {panel}
+                  </a>
+                ) : (
+                  <div className={panelClass}>{panel}</div>
+                )}
+
+                {project.award ? (
+                  <div className="award">
+                    <div className="award-head">
+                      <p className="sq">Winner</p>
+                      <p>{project.type}</p>
+                      <p>{project.awardNote}</p>
+                    </div>
+                    <p className="award-title">{project.award}</p>
+                    <dl className="award-stats">
+                      {project.stats?.map((stat) => (
+                        <div key={stat.label}>
+                          <dt>{stat.label}</dt>
+                          <dd>{stat.value}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                    <div className="award-body">
+                      <p>{project.description}</p>
+                      <div className="feature-links">
+                        <a className="text-link" href={project.url} target="_blank" rel="noreferrer">
+                          Live demo <Arrow />
+                        </a>
+                        <a className="text-link" href={project.code} target="_blank" rel="noreferrer">
+                          Code <Arrow />
+                        </a>
                       </div>
-                    ))}
-                  </dl>
-                  <div className="award-body">
-                    <p>{project.description}</p>
-                    <div className="feature-links">
-                      <a className="text-link" href={project.url} target="_blank" rel="noreferrer">
-                        Live demo <Arrow />
-                      </a>
-                      <a className="text-link" href={project.code} target="_blank" rel="noreferrer">
-                        Code <Arrow />
-                      </a>
                     </div>
                   </div>
-                </div>
-              ) : (
-                <div className="feature-body">
-                  <p>{project.description}</p>
-                  <div className="feature-links">
-                    <a className="text-link" href={project.url} target="_blank" rel="noreferrer">
-                      Live demo <Arrow />
-                    </a>
-                    <a className="text-link" href={project.code} target="_blank" rel="noreferrer">
-                      Code <Arrow />
-                    </a>
+                ) : (
+                  <div className="feature-body">
+                    <p>{project.description}</p>
+                    {project.role ? (
+                      <dl className="feature-facts">
+                        <div>
+                          <dt>My part</dt>
+                          <dd>{project.role}</dd>
+                        </div>
+                        <div>
+                          <dt>Team</dt>
+                          <dd>{project.team}</dd>
+                        </div>
+                      </dl>
+                    ) : (
+                      <div className="feature-links">
+                        <a className="text-link" href={project.url} target="_blank" rel="noreferrer">
+                          Live demo <Arrow />
+                        </a>
+                        <a className="text-link" href={project.code} target="_blank" rel="noreferrer">
+                          Code <Arrow />
+                        </a>
+                      </div>
+                    )}
                   </div>
-                </div>
-              )}
-            </article>
-          ))}
+                )}
+
+                {project.gallery && (
+                  <ul className="gallery" aria-label={`Screenshots of the ${project.title}`}>
+                    {project.gallery.map((shot) => (
+                      <li key={shot.image}>
+                        <figure>
+                          <img
+                            src={`/projects/${shot.image}-1280.webp`}
+                            srcSet={previewSrcSet(shot.image, [640, 1280])}
+                            sizes="(max-width: 760px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            alt={shot.alt}
+                            width="1280"
+                            height="720"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                          <figcaption>
+                            <span>{shot.label}</span>
+                            {shot.caption}
+                          </figcaption>
+                        </figure>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </article>
+            );
+          })}
 
           <ul className="index">
             {projects.map((project, index) => {
@@ -348,10 +449,7 @@ export default function Home() {
             <a className="see-more" href={studio} target="_blank" rel="noreferrer">
               See my studio work with Inderpreet <Arrow />
             </a>
-            <p>
-              Websites for hotels, bars and small businesses. Also: a Unity 6 training
-              simulator of a biogas plant, built with chemical-engineering students.
-            </p>
+            <p>Websites for hotels, bars and small businesses.</p>
           </div>
         </section>
 
