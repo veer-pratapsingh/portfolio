@@ -1,9 +1,23 @@
 /* eslint-disable @next/next/no-img-element */
 import { Arrow } from "./arrow";
 
+// Hotel websites lead, then everything else. The grid alternates a wide card,
+// a pair, then a mirrored wide card, so `size` follows position, not project.
 const projects = [
   {
     number: "01",
+    title: "Hotel ElbRivera",
+    type: "Hospitality · Magdeburg",
+    description:
+      "A conversion-led hospitality experience translating riverside stays, wellness, F&B and events into one clearer guest journey.",
+    image: "hotel-elbrivera",
+    url: "https://www.hotel-elbrivera.de/",
+    displayUrl: "hotel-elbrivera.de / Magdeburg",
+    accent: "accent-river",
+    size: "project-wide",
+  },
+  {
+    number: "02",
     title: "Hotel Metropolis",
     type: "Hospitality · Srinagar",
     description:
@@ -11,101 +25,22 @@ const projects = [
     image: "hotel-metropolis",
     url: "https://hotelmetropolis.in/",
     accent: "accent-forest",
-    size: "project-wide",
-  },
-  {
-    number: "02",
-    title: "CrickRoo",
-    type: "Sports technology",
-    description:
-      "A high-energy product site for cricket training intelligence, built to make performance feel tangible.",
-    image: "crickroo",
-    url: "https://www.crickroo.com/",
-    accent: "accent-orange",
     size: "",
   },
   {
     number: "03",
-    title: "Synterra Tech Labs",
-    type: "Technology studio",
-    description:
-      "A precise editorial identity for a software studio building scalable web, mobile, AI and cloud products.",
-    image: "synterra",
-    url: "https://synterra-technologies.vercel.app/",
-    accent: "accent-stone",
-    size: "",
-  },
-  {
-    number: "04",
-    title: "Hormone Nutrition Clinic",
-    type: "Health & wellness",
-    description:
-      "A trustworthy, welcoming care experience that makes clinical nutrition feel human and approachable.",
-    image: "hormone-nutrition",
-    url: "https://www.hormonenutritionclinic.com/",
-    accent: "accent-sage",
-    size: "project-wide",
-  },
-  {
-    number: "05",
-    title: "Ambur Cold Chain",
-    type: "Food & logistics",
-    description:
-      "A confident B2B presence for a modern cold-chain operation, from orchard to controlled storage.",
-    image: "ambur",
-    url: "https://ambur.co.in/",
-    accent: "accent-slate",
-    size: "",
-  },
-  {
-    number: "06",
-    title: "Tripund Technologies",
-    type: "Digital product agency",
-    description:
-      "A clean, contemporary agency site positioning an end-to-end team for ambitious digital products.",
-    image: "tripund",
-    url: "https://tripundtechnologies.in/",
-    accent: "accent-amber",
-    size: "",
-  },
-  {
-    number: "07",
-    title: "Hotel ElbRivera",
+    title: "Hotel Golden Pearl",
     type: "Hospitality · Magdeburg",
     description:
-      "A conversion-led hospitality experience translating riverside stays, wellness, F&B and events into one clearer guest journey.",
-    image: "hotel-elbrivera",
-    url: "https://www2.hotel-elbrivera.de/hotel-magdeburg-concept-a-vorschau-entwurf/",
-    displayUrl: "hotel-elbrivera.de / Magdeburg",
-    accent: "accent-river",
-    size: "project-wide",
-  },
-  {
-    number: "08",
-    title: "Langbar Berlin",
-    type: "Hospitality · Berlin",
-    description:
-      "A vivid Berlin bar experience built around atmosphere, place and a sharper conversion path.",
-    image: "langbar-berlin",
-    url: "https://langbar-berlin-concept.vercel.app/",
-    displayUrl: "langbar-berlin.de / Route 01",
+      "A warm, premium hotel experience presenting rooms, dining and direct booking with a clear editorial rhythm.",
+    image: "hotel-golden-pearl",
+    url: "https://hotel-golden-pearl.vercel.app/",
+    displayUrl: "golden-pearl.de / Magdeburg",
     accent: "accent-brass",
     size: "",
   },
   {
-    number: "09",
-    title: "Langbar Berlin — Night Edit",
-    type: "Hospitality · Berlin",
-    description:
-      "A more editorial, night-led identity for Langbar Berlin with a clear path from discovery to reservation.",
-    image: "langbar-berlin-night",
-    url: "https://langbar-berlin-concept-2.vercel.app/",
-    displayUrl: "langbar-berlin.de / Night edit",
-    accent: "accent-bronze",
-    size: "",
-  },
-  {
-    number: "10",
+    number: "04",
     title: "Ratswaage Hotel Magdeburg",
     type: "Hospitality · Magdeburg",
     description:
@@ -117,15 +52,82 @@ const projects = [
     size: "project-wide",
   },
   {
-    number: "11",
-    title: "Hotel Golden Pearl",
-    type: "Hospitality · Magdeburg",
+    number: "05",
+    title: "Langbar Berlin",
+    type: "Hospitality · Berlin",
     description:
-      "A warm, premium hotel experience presenting rooms, dining and direct booking with a clear editorial rhythm.",
-    image: "hotel-golden-pearl",
-    url: "https://hotel-golden-pearl.vercel.app/",
-    displayUrl: "golden-pearl.de / Magdeburg",
+      "A vivid Berlin bar experience built around atmosphere, place and a sharper conversion path.",
+    image: "langbar-berlin",
+    url: "https://langbar-berlin-concept.vercel.app/",
+    displayUrl: "langbar-berlin.de / Route 01",
     accent: "accent-brass",
+    size: "",
+  },
+  {
+    number: "06",
+    title: "Langbar Berlin — Night Edit",
+    type: "Hospitality · Berlin",
+    description:
+      "A more editorial, night-led identity for Langbar Berlin with a clear path from discovery to reservation.",
+    image: "langbar-berlin-night",
+    url: "https://langbar-berlin-concept-2.vercel.app/",
+    displayUrl: "langbar-berlin.de / Night edit",
+    accent: "accent-bronze",
+    size: "",
+  },
+  {
+    number: "07",
+    title: "CrickRoo",
+    type: "Sports technology",
+    description:
+      "A high-energy product site for cricket training intelligence, built to make performance feel tangible.",
+    image: "crickroo",
+    url: "https://www.crickroo.com/",
+    accent: "accent-orange",
+    size: "project-wide",
+  },
+  {
+    number: "08",
+    title: "Synterra Tech Labs",
+    type: "Technology studio",
+    description:
+      "A precise editorial identity for a software studio building scalable web, mobile, AI and cloud products.",
+    image: "synterra",
+    url: "https://synterra-technologies.vercel.app/",
+    accent: "accent-stone",
+    size: "",
+  },
+  {
+    number: "09",
+    title: "Hormone Nutrition Clinic",
+    type: "Health & wellness",
+    description:
+      "A trustworthy, welcoming care experience that makes clinical nutrition feel human and approachable.",
+    image: "hormone-nutrition",
+    url: "https://www.hormonenutritionclinic.com/",
+    accent: "accent-sage",
+    size: "",
+  },
+  {
+    number: "10",
+    title: "Ambur Cold Chain",
+    type: "Food & logistics",
+    description:
+      "A confident B2B presence for a modern cold-chain operation, from orchard to controlled storage.",
+    image: "ambur",
+    url: "https://ambur.co.in/",
+    accent: "accent-slate",
+    size: "project-wide",
+  },
+  {
+    number: "11",
+    title: "Tripund Technologies",
+    type: "Digital product agency",
+    description:
+      "A clean, contemporary agency site positioning an end-to-end team for ambitious digital products.",
+    image: "tripund",
+    url: "https://tripundtechnologies.in/",
+    accent: "accent-amber",
     size: "",
   },
   {
@@ -244,8 +246,9 @@ export default function Home() {
             <p className="section-kicker">Our work / 2024–26</p>
             <h2>Our work, on the web.</h2>
             <p>
-              Landing-page previews across hospitality, technology, health, food and
-              product brands. Open any project to explore the full website.
+              Our hotel websites come first, followed by landing pages across
+              hospitality, technology, health, food and product brands. Open any
+              project to explore the full website.
             </p>
           </div>
 

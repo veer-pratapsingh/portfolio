@@ -8,17 +8,19 @@ and a tailored Hotel ElbRivera website audit.
 
 ## Selected work
 
+Hotel websites are listed first, then the rest of the work.
+
+- [Hotel ElbRivera](https://www.hotel-elbrivera.de/)
 - [Hotel Metropolis](https://hotelmetropolis.in/)
-- [Ambur Cold Chain](https://ambur.co.in/)
-- [Synterra Tech Labs](https://synterra-technologies.vercel.app/)
-- [CrickRoo](https://www.crickroo.com/)
-- [Hormone Nutrition Clinic](https://www.hormonenutritionclinic.com/)
-- [Tripund Technologies](https://tripundtechnologies.in/)
-- [Hotel ElbRivera](https://www2.hotel-elbrivera.de/hotel-magdeburg-concept-a-vorschau-entwurf/)
+- [Hotel Golden Pearl](https://hotel-golden-pearl.vercel.app/)
+- [Ratswaage Hotel Magdeburg](https://ratswaage-hotel-magdeburg.vercel.app/)
 - [Langbar Berlin](https://langbar-berlin-concept.vercel.app/)
 - [Langbar Berlin — Night Edit](https://langbar-berlin-concept-2.vercel.app/)
-- [Ratswaage Hotel Magdeburg](https://ratswaage-hotel-magdeburg.vercel.app/)
-- [Hotel Golden Pearl](https://hotel-golden-pearl.vercel.app/)
+- [CrickRoo](https://www.crickroo.com/)
+- [Synterra Tech Labs](https://synterra-technologies.vercel.app/)
+- [Hormone Nutrition Clinic](https://www.hormonenutritionclinic.com/)
+- [Ambur Cold Chain](https://ambur.co.in/)
+- [Tripund Technologies](https://tripundtechnologies.in/)
 - [AFS National AI Hackathon](https://afsnationalaihackathon.vercel.app/)
 
 ## Our research

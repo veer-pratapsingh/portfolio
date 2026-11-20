@@ -72,6 +72,13 @@ test("server-renders the completed portfolio", async () => {
   ]) {
     assert.match(html, new RegExp(domain.replaceAll(".", "\\.")));
   }
+
+  // Hotel ElbRivera links to the live site, and the four hotels lead the work grid.
+  assert.match(html, /href="https:\/\/www\.hotel-elbrivera\.de\/"/);
+  assert.doesNotMatch(html, /www2\.hotel-elbrivera\.de/);
+  const grid = html.indexOf('<article class="project-card');
+  assert.ok(html.indexOf("Hotel ElbRivera", grid) < html.indexOf("Hotel Metropolis", grid));
+  assert.ok(html.indexOf("Ratswaage Hotel Magdeburg", grid) < html.indexOf("Langbar Berlin", grid));
 });
 
 test("server-renders the dedicated Hotel ElbRivera research pitch", async () => {
