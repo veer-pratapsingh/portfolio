@@ -2,5 +2,12 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
   "buildCommand": "npm run build:vercel",
-  "outputDirectory": ".next-vercel"
+  "outputDirectory": ".next-vercel",
+  "redirects": [
+    {
+      "source": "/research",
+      "destination": "https://v-and-i-portfolio.vercel.app/research",
+      "permanent": false
+    }
+  ]
 }

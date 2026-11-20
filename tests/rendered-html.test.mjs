@@ -23,97 +23,65 @@ async function render(pathname = "/") {
   );
 }
 
-test("server-renders the completed portfolio", async () => {
+test("server-renders the personal portfolio", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /Veer Pratap Singh/);
-  assert.match(html, /Inderpreet Singh/);
-  assert.match(html, /We build brands/);
-  assert.match(html, /people choose\./);
-  assert.match(html, /Our research/);
-  assert.match(html, /Our work, on the web\./);
-  assert.match(html, /Landing page/);
-  assert.match(html, /class="landing-preview-image"/);
-  assert.doesNotMatch(html, /<iframe|live-preview-frame|Live view/);
-  assert.match(html, /Let’s turn your next idea/);
+  assert.match(html, /Veer Pratap/);
+  assert.match(html, /Open to Werkstudent roles/);
+  assert.match(html, /I build AI that ships/);
 
-  const renderedProjects = html.match(/<article class="project-card/g) ?? [];
-  assert.equal(renderedProjects.length, 12);
+  // Two live-demo panels plus four indexed projects.
+  assert.equal((html.match(/<article class="feature"/g) ?? []).length, 2);
+  assert.equal((html.match(/class="index-row"/g) ?? []).length, 4);
 
-  const renderedContentCases = html.match(/<article class="content-case/g) ?? [];
-  assert.equal(renderedContentCases.length, 0);
-
-  const renderedBenchmarks = html.match(/<a href="[^"]+" target="_blank" rel="noreferrer"><span>\d{2}<\/span>/g) ?? [];
-  assert.equal(renderedBenchmarks.length, 6);
-
-  assert.match(html, /Selected hotel projects,/);
-  assert.match(html, /across India\./);
-  assert.doesNotMatch(html, /Not client work|references we study|study the category/);
-  assert.doesNotMatch(html, /Concept build|Concept builds|concept builds/);
-  assert.doesNotMatch(html, /A focused opportunity \/ Hotel ElbRivera/);
-  assert.doesNotMatch(html, /Das Elb|daselb\.com|Singh Laly|Intellia|singhlalyofficial|intellia_miet|Munich|Cologne/);
-
-  for (const domain of [
-    "hotelmetropolis.in",
-    "ambur.co.in",
-    "synterra-technologies.vercel.app",
-    "crickroo.com",
-    "hormonenutritionclinic.com",
-    "tripundtechnologies.in",
-    "hotel-elbrivera.de",
-    "langbar-berlin-concept.vercel.app",
-    "langbar-berlin-concept-2.vercel.app",
-    "ratswaage-hotel-magdeburg.vercel.app",
-    "hotel-golden-pearl.vercel.app",
-    "afsnationalaihackathon.vercel.app",
-  ]) {
-    assert.match(html, new RegExp(domain.replaceAll(".", "\\.")));
+  for (const text of ["Swaja Robotics", "talk2move", "UMUN Tech", "IIT Kanpur", "Otto von Guericke University Magdeburg"]) {
+    assert.match(html, new RegExp(text));
   }
 
-  // Hotel ElbRivera links to the live site, and the four hotels lead the work grid.
-  assert.match(html, /href="https:\/\/www\.hotel-elbrivera\.de\/"/);
-  assert.doesNotMatch(html, /www2\.hotel-elbrivera\.de/);
-  const grid = html.indexOf('<article class="project-card');
-  assert.ok(html.indexOf("Hotel ElbRivera", grid) < html.indexOf("Hotel Metropolis", grid));
-  assert.ok(html.indexOf("Ratswaage Hotel Magdeburg", grid) < html.indexOf("Langbar Berlin", grid));
+  // The hackathon win is the orange highlight, and the AFS panel dissolves into it.
+  assert.match(html, /class="award"/);
+  assert.match(html, /schubKI Founders’ Award/);
+  assert.match(html, /One of two winning teams among 63/);
+  assert.equal((html.match(/class="pixel-transition"/g) ?? []).length, 2);
+
+  // A short intro plays on load; X is gone because it isn't used.
+  assert.match(html, /class="loader"/);
+  assert.doesNotMatch(html, /x\.com\//);
+
+  // The CV downloads from the header and from the contact section.
+  assert.equal((html.match(/href="\/Veer_Pratap_Singh_CV\.pdf" download=""/g) ?? []).length, 2);
+  await access(new URL("../public/Veer_Pratap_Singh_CV.pdf", import.meta.url));
+
+  for (const url of [
+    "https://afsnationalaihackathon.vercel.app/",
+    "https://md-forge-teal.vercel.app/",
+    "https://github.com/veer-pratapsingh/HCAI-fairness-recsys",
+    "https://www.linkedin.com/in/veer-pratap-singh07/",
+    "https://v-and-i-portfolio.vercel.app/",
+  ]) {
+    assert.match(html, new RegExp(url.replaceAll(".", "\\.")));
+  }
+
+  // The joint studio site lives on its own link now.
+  assert.doesNotMatch(html, /We build brands|Hotel ElbRivera|Our research/);
 });
 
-test("server-renders the dedicated Hotel ElbRivera research pitch", async () => {
-  const response = await render("/research");
-  assert.equal(response.status, 200);
-  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
-
-  const html = await response.text();
-  assert.match(html, /Our research \/ Hotel ElbRivera/);
-  assert.match(html, /From riverside stay/);
-  assert.match(html, /Website &amp; direct-booking journey/);
-  assert.match(html, /SEO &amp; GEO discoverability/);
-  assert.match(html, /Performance ads &amp; remarketing/);
-  assert.match(html, /Google presence &amp; reputation/);
-  assert.match(html, /F&amp;B Activation &amp; Event Planning/);
-  assert.match(html, /A focused first 90 days/);
-  assert.match(html, /Discuss the proposal/);
-});
-
-test("removes starter-only assets and keeps portfolio metadata", async () => {
-  const [page, layout, packageJson] = await Promise.all([
-    readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+test("keeps personal metadata and forwards the old research link", async () => {
+  const [layout, vercel] = await Promise.all([
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
-    readFile(new URL("../package.json", import.meta.url), "utf8"),
+    readFile(new URL("../vercel.json", import.meta.url), "utf8"),
   ]);
 
-  assert.match(page, /const projects = \[/);
-  assert.match(layout, /Veer \+ Inderpreet/);
-  assert.match(layout, /Hospitality Web, Content & Brand Partners/);
-  assert.match(layout, /\/og\.png/);
-  assert.doesNotMatch(layout, /avatar\.jpg/);
-  assert.doesNotMatch(packageJson, /react-loading-skeleton/);
-  assert.doesNotMatch(page, /SkeletonPreview|codex-preview/);
+  assert.match(layout, /Veer Pratap Singh — AI & Full-Stack Engineer/);
+  assert.match(layout, /\/og\.jpg/);
 
-  await assert.rejects(
-    access(new URL("../app/_sites-preview/SkeletonPreview.tsx", import.meta.url)),
-  );
+  const { redirects } = JSON.parse(vercel);
+  assert.deepEqual(redirects[0], {
+    source: "/research",
+    destination: "https://v-and-i-portfolio.vercel.app/research",
+    permanent: false,
+  });
 });

@@ -1,53 +1,57 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Sans, Instrument_Serif } from "next/font/google";
+import { Antonio, DM_Mono, DM_Sans } from "next/font/google";
 import "./globals.css";
 
-const instrumentSans = Instrument_Sans({
+const antonio = Antonio({
+  variable: "--font-display",
+  subsets: ["latin"],
+});
+
+const dmMono = DM_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+});
+
+const dmSans = DM_Sans({
   variable: "--font-body",
   subsets: ["latin"],
 });
 
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-});
-
-const socialImage = "https://veer-pratap-singh-portfolio.vercel.app/og.png";
+const socialImage = "https://veer-pratap-singh-portfolio.vercel.app/og.jpg";
+const title = "Veer Pratap Singh — AI & Full-Stack Engineer";
+const description =
+  "LLM applications, retrieval and reranking, MLOps and IoT data pipelines. M.Sc. Data and Knowledge Engineering student in Magdeburg, open to Werkstudent roles.";
 
 export const metadata: Metadata = {
-    title: "Veer + Inderpreet — Hospitality Web, Content & Brand Partners",
-    description:
-      "Selected websites, content management and brand consulting by Veer Pratap Singh and Inderpreet Singh, with a focus on hospitality.",
-    icons: {
-      icon: "/favicon.svg",
-    },
-    openGraph: {
-      title: "Veer + Inderpreet — Websites. Content. Brand.",
-      description:
-        "Hospitality-focused digital partners building websites, content systems and brands people choose.",
-      type: "website",
-      images: [
-        {
-          url: socialImage,
-          width: 1200,
-          height: 630,
-          alt: "Veer and Inderpreet — Websites, content and brand",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: "Veer + Inderpreet — Websites. Content. Brand.",
-      description:
-        "Hospitality-focused digital partners building websites, content systems and brands people choose.",
-      images: [socialImage],
-    },
+  title,
+  description,
+  icons: {
+    icon: "/favicon.svg",
+  },
+  openGraph: {
+    title,
+    description,
+    type: "website",
+    images: [
+      {
+        url: socialImage,
+        width: 1200,
+        height: 630,
+        alt: "Veer Pratap Singh, AI and full-stack engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [socialImage],
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f5f2ec",
+  themeColor: "#f5f5f3",
 };
 
 export default function RootLayout({
@@ -57,7 +61,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${instrumentSans.variable} ${instrumentSerif.variable}`}>
+      <body className={`${antonio.variable} ${dmMono.variable} ${dmSans.variable}`}>
         {children}
       </body>
     </html>
