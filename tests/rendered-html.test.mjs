@@ -59,6 +59,7 @@ test("server-renders the personal portfolio", async () => {
     "https://afsnationalaihackathon.vercel.app/",
     "https://md-forge-teal.vercel.app/",
     "https://github.com/veer-pratapsingh/HCAI-fairness-recsys",
+    "https://github.com/veer-pratapsingh/airline-satisfaction-mlops",
     "https://www.linkedin.com/in/veer-pratap-singh07/",
     "https://v-and-i-portfolio.vercel.app/",
   ]) {

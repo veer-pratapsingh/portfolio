@@ -56,7 +56,7 @@ const projects = [
     description:
       "Nine-step pipeline behind a four-stage GitLab CI/CD: Feast feature store, Optuna-tuned models tracked in MLflow, a ROC-AUC gate for champion and challenger promotion, FastAPI serving with an 80/20 traffic split, Grafana monitoring.",
     stack: "Python, Feast, MLflow, Docker, FastAPI, Grafana",
-    note: "Code on the university GitLab",
+    code: "https://github.com/veer-pratapsingh/airline-satisfaction-mlops",
   },
   {
     title: "Focus Guardian",
@@ -330,21 +330,15 @@ export default function Home() {
                   <div className="index-side">
                     <p>{project.type}</p>
                     <p className="index-result">{project.result}</p>
-                    <p className="index-cta">
-                      {project.code ? <>Code <Arrow /></> : project.note}
-                    </p>
+                    <p className="index-cta">Code <Arrow /></p>
                   </div>
                 </>
               );
               return (
                 <li key={project.title}>
-                  {project.code ? (
-                    <a className="index-row" href={project.code} target="_blank" rel="noreferrer">
-                      {content}
-                    </a>
-                  ) : (
-                    <div className="index-row">{content}</div>
-                  )}
+                  <a className="index-row" href={project.code} target="_blank" rel="noreferrer">
+                    {content}
+                  </a>
                 </li>
               );
             })}

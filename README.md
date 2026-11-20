@@ -15,7 +15,7 @@ The old `/research` link on this domain forwards there (see `vercel.json`).
 - [AFS In-line Spectroscopy Assistant](https://afsnationalaihackathon.vercel.app/) ([code](https://github.com/Adarshpandey2003/afs_national_ai_hackathon))
 - [md forge](https://md-forge-teal.vercel.app/) ([code](https://github.com/veer-pratapsingh/md-forge))
 - [Fairness in LLM-based learning recommendation](https://github.com/veer-pratapsingh/HCAI-fairness-recsys)
-- Airline satisfaction MLOps pipeline (code on the university GitLab)
+- [Airline satisfaction MLOps pipeline](https://github.com/veer-pratapsingh/airline-satisfaction-mlops) (team project)
 - [Focus Guardian](https://github.com/veer-pratapsingh/focus-guardian)
 - [Sign-language detection](https://github.com/veer-pratapsingh/Final-Year-Project-Sign-Language-Detection)
 
