@@ -64,7 +64,6 @@ h3,
 .hero-bar,
 .statement-label,
 .feature-meta,
-.feature-facts dt,
 .gallery figcaption span,
 .text-link,
 .index-number,
@@ -525,29 +524,7 @@ a.feature-panel:hover::after {
   color: var(--accent-ink);
 }
 
-/* Team projects without a live demo say who did what, then show in-app screenshots. */
-.feature-facts {
-  display: grid;
-  gap: 1.25rem;
-  margin: 0;
-}
-
-.feature-facts div {
-  display: grid;
-  gap: 0.4rem;
-  padding-top: 0.9rem;
-  border-top: 1px solid var(--line);
-}
-
-.feature-facts dt {
-  color: var(--accent-ink);
-}
-
-.feature-facts dd {
-  max-width: 62ch;
-  margin: 0;
-}
-
+/* Projects without a live demo show in-app screenshots instead. */
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

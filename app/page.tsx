@@ -44,10 +44,8 @@ const featured = [
     description:
       "A walkable 3D biogas plant that teaches anaerobic digestion. A narrated tour leads through six stations: choose a feedstock, prepare the slurry, set the digester, store the gas, separate the digestate and turn biogas into power and heat. Every setting changes the estimated gas output live.",
     image: "biogas-simulator",
-    // A Windows app with no public demo: the panel shows who did what and in-app screenshots.
+    // A Windows app with no public demo, so it shows in-app screenshots instead of links.
     badge: "Windows app",
-    role: "Modelled gas production with modified Gompertz kinetics in one shared calculation model, kept the mass balance consistent across the interface and reports, and implemented the live process controls.",
-    team: "Six students from chemical and energy engineering, digital engineering and data and knowledge engineering · ten supervisor-reviewed sprints",
     gallery: [
       {
         image: "biogas/feedstock",
@@ -366,18 +364,7 @@ export default function Home() {
                 ) : (
                   <div className="feature-body">
                     <p>{project.description}</p>
-                    {project.role ? (
-                      <dl className="feature-facts">
-                        <div>
-                          <dt>My part</dt>
-                          <dd>{project.role}</dd>
-                        </div>
-                        <div>
-                          <dt>Team</dt>
-                          <dd>{project.team}</dd>
-                        </div>
-                      </dl>
-                    ) : (
+                    {project.url && (
                       <div className="feature-links">
                         <a className="text-link" href={project.url} target="_blank" rel="noreferrer">
                           Live demo <Arrow />

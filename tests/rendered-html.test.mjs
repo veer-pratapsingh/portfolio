@@ -37,10 +37,10 @@ test("server-renders the personal portfolio", async () => {
   assert.equal((html.match(/<article class="feature"/g) ?? []).length, 3);
   assert.equal((html.match(/class="index-row"/g) ?? []).length, 4);
 
-  // The simulator has no public demo, so it states the team role and shows six screenshots.
+  // The simulator has no public demo, so it shows six screenshots and no role or team lines.
   assert.match(html, /Smart Biogas Plant Simulator/);
-  assert.match(html, /modified Gompertz kinetics/);
   assert.equal((html.match(/<figure>/g) ?? []).length, 6);
+  assert.doesNotMatch(html, /My part|feature-facts/);
 
   // Every preview image the page references is in public/.
   for (const url of new Set(html.match(/\/projects\/[\w/-]+\.webp/g))) {
